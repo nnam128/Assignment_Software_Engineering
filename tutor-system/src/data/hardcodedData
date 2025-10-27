@@ -2,6 +2,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  password: string;
   role: 'student' | 'tutor' | 'admin';
   avatar?: string;
   department?: string;
@@ -78,14 +79,16 @@ export const mockUsers: User[] = [
     id: 'S001',
     name: 'Nguyễn Văn A',
     email: 'a.nguyenvan@hcmut.edu.vn',
+    password: 'NguyenVanA';
     role: 'student',
     department: 'Computer Science',
-    studentId: '2152001',
+    studentId: '2352001',
   },
   {
     id: 'T001',
     name: 'Dr. Trần Thị B',
     email: 'tranthib@hcmut.edu.vn',
+    password: 'TranThiB',
     role: 'tutor',
     department: 'Computer Science',
   },
@@ -93,6 +96,7 @@ export const mockUsers: User[] = [
     id: 'O001',
     name: 'Phòng Văn Phòng Khoa',
     email: 'office_cs@hcmut.edu.vn',
+    password: 'OfficeCSE';
     role: 'admin',
     department: 'Computer Science',
   },
