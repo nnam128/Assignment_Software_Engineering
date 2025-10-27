@@ -79,7 +79,7 @@ export const mockUsers: User[] = [
     id: 'S001',
     name: 'Nguyễn Văn A',
     email: 'a.nguyenvan@hcmut.edu.vn',
-    password: 'NguyenVanA';
+    password: 'NguyenVanA',
     role: 'student',
     department: 'Computer Science',
     studentId: '2352001',
@@ -96,7 +96,7 @@ export const mockUsers: User[] = [
     id: 'O001',
     name: 'Phòng Văn Phòng Khoa',
     email: 'office_cs@hcmut.edu.vn',
-    password: 'OfficeCSE';
+    password: 'OfficeCSE',
     role: 'admin',
     department: 'Computer Science',
   },
@@ -384,5 +384,4 @@ export const mockClassRequests: ClassRequest[] = [
   },
 ];
 
-export const currentUser: User = mockUsers[0]; 
 

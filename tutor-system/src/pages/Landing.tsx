@@ -2,8 +2,30 @@ import { Button } from '../component/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../component/ui/card';
 import { GraduationCap, BookOpen, Users, BarChart3, CalendarDays, ClipboardClock, SquareLibrary } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getCurrentUser } from '../Authentic/AuthProvider';
 
-const Landing = () => {
+export function Landing() {
+  function AuthLink() {
+  const user = getCurrentUser();
+
+  if (user) {
+    return (
+      <Link to={`/${user.role}/dashboard`} >
+        <Button size="lg" variant="secondary" className="gap-2 text-base px-8 shadow-elevated">
+          Get Started
+        </Button>
+      </Link>
+    );
+  } else {
+    return (
+      <Link to={`/login`} >
+        <Button size="lg" variant="secondary" className="gap-2 text-base px-8 shadow-elevated">
+          Get Started
+        </Button>
+      </Link>
+    );
+  }
+}
   const roles = [
     {
       title: 'Student',
@@ -49,11 +71,7 @@ const Landing = () => {
                 in one integrated platform
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Link to="/student/login">
-                  <Button size="lg" variant="secondary" className="gap-2 text-base px-8 shadow-elevated">
-                    Get Started
-                  </Button>
-                </Link>
+                {AuthLink()}
                 <Button size="lg" variant="outline" className="gap-2 text-base px-8 bg-white/10 border-white/30 text-white hover:bg-white/20">
                   <Users className="w-5 h-5" />
                   Learn More
@@ -146,5 +164,3 @@ const Landing = () => {
     </>
   );
 };
-
-export default Landing;
