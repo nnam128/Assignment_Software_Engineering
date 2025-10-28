@@ -16,11 +16,7 @@ function AuthLink() {
       return (
         <a
           href="/"
-          onClick={(e) => {
-            e.preventDefault();
-            logout();
-            window.location.reload();
-          }}
+          onClick={() => logout()}
           className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-white/80 hover:bg-white/10 hover:text-white"
         >
           <LogOut className="w-4 h-4" />
@@ -69,7 +65,7 @@ export function Header({ children, role }: LayoutProps){
   const navigation = role === 'student' ? studentNav : role === 'tutor' ? tutorNav : adminNav;
 
   return (
-    <div className="min-h-screen bg-background w-full">
+    <div className="min-h-screen bg-gradient-50 w-full">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b bg-gradient-to-r from-primary via-primary-500 via-primary-300 to-[#0baaa5] border-white/10 backdrop-blur-sm">
         <div className="mx-auto px-4">
@@ -110,7 +106,7 @@ export function Header({ children, role }: LayoutProps){
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto w-full mt-3">
+      <main className="container mx-auto w-full mt-10">
         {children}
       </main>
 

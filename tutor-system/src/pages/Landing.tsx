@@ -11,7 +11,7 @@ export function Landing() {
     if (user) {
       return (
         <Link to={`/${user.role}/dashboard`} >
-          <Button size="lg" variant="secondary" className="gap-2 text-base px-8 shadow-elevated">
+          <Button size="lg" variant="secondary" className="gap-2 text-base px-8 shadow-elevated bg-secondary-500">
             <BookCheck className="w-5 h-5" />
             Get Started
           </Button>
@@ -87,10 +87,10 @@ export function Landing() {
         <section className="py-16 px-4">
           <div className="container mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Choose Your Role
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg max-w-2xl mx-auto">
                 Select your role to access personalized features and tools designed for your needs
               </p>
             </div>
@@ -100,7 +100,7 @@ export function Landing() {
                 const Icon = role.icon;
                   return (
                     <Link key={role.title} to={role.link}>
-                      <Card className="group hover:shadow-card-hover transition-all duration-300 cursor-pointer border-border/50 bg-gradient-card h-full">
+                      <Card className="group hover:shadow-card-hover transition-all duration-300 cursor-pointer h-full">
                         <CardHeader>
                           <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${role.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                             <Icon className="w-7 h-7 text-white" />
@@ -113,7 +113,7 @@ export function Landing() {
                           </CardDescription>
                         </CardHeader>
                         <CardContent>
-                          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white hover:bg-primary transition-colors">
                             Access {role.title} Portal
                           </Button>
                         </CardContent>
@@ -132,7 +132,7 @@ export function Landing() {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Key Features
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-gradient-700 max-w-2xl mx-auto">
                 Everything you need for effective academic support and mentoring
               </p>
             </div>
@@ -144,7 +144,7 @@ export function Landing() {
                 { title: 'Learning Hub', desc: 'Share materials and collaborate with peers', icon: SquareLibrary },
                 { title: 'Progress Tracking', desc: 'Monitor attendance and academic performance', icon: ClipboardClock },
               ].map((feature, idx) => (
-                <Card key={idx} className="text-center border-border/50 bg-gradient-card hover:shadow-card transition-shadow">
+                <Card key={idx} className="text-center hover:shadow-card transition-shadow">
                   <CardHeader>
                     <div className="text-4xl mb-3 mx-auto">{typeof feature.icon === 'string' ? feature.icon : <feature.icon className="w-10 h-10 mx-auto text-primary" />}</div>
                     <CardTitle className="text-lg">{feature.title}</CardTitle>
@@ -158,7 +158,7 @@ export function Landing() {
 
         {/* Footer */}
         <footer className="py-8 px-4 border-t border-border bg-card">
-          <div className="container mx-auto text-center text-muted-foreground">
+          <div className="container mx-auto text-center">
             <p>Assignment Project of Software Engineering</p>
           </div>
         </footer>

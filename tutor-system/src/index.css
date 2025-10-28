@@ -29,10 +29,11 @@
   --color-primary-950: #0c2745;
 
   /* Secondary */
-  --color-secondary: #f9ba08;
-  --color-secondary-300: #fcd75e;
-  --color-secondary-700: #c18706;
-  --color-secondary-100: #fef3c7;
+  --color-secondary: #29d8cc;
+  --color-secondary-300: #97f8eb;
+  --color-secondary-500: #10bcb3;
+  --color-secondary-700: #0d7876;
+  --color-secondary-100: #cbfcf5;
 
   /* Tertiary */
   --color-tertiary: #3d4863;
@@ -43,6 +44,27 @@
 
   /* Background */
   --color-background: #f4f8fa;
+
+  /* Accent */
+  --color-accent: #f9ba08;
+  --color-accent-300: #fcd75e;
+  --color-accent-700: #c18706;
+  --color-accent-100: #fef3c7;
+  --color-accent-500: #dd8f02;
+  --color-accent-600: #f98806;
+
+
+  /* Gradient */
+  --color-gradient: #cfd2d1;
+  --color-gradient-50: #f7f8f8;
+  --color-gradient-600: #7e8484;
+  --color-gradient-700: #686e6e;
+
+
+  /* Destructive */
+  --color-destructive: #e64c4c;
+  --color-destructive-50: #fdf3f3;
+  --color-destructive-600: #d32f2f;
   
 
   /* Shadow */

@@ -1,0 +1,112 @@
+import { type Class } from '../../data/hardcodedData';
+import { Badge } from './badge';
+import { Button } from './button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
+import { Calendar, MapPin, Users, Clock } from 'lucide-react';
+import { cn } from '../../lib/utils';
+import { Link } from 'react-router-dom';
+
+interface ClassCardProps {
+  classData: Class;
+  showEnrollButton?: boolean;
+  enrolled?: boolean;
+}
+
+const ClassCard = ({ classData, showEnrollButton = false, enrolled = false }: ClassCardProps) => {
+  const isFull = classData.status === 'full';
+  const spotsLeft = classData.maxStudents - classData.enrolledStudents;
+
+  return (
+    <Card className="group hover:shadow-card-hover transition-all duration-300 bg-white">
+      <CardHeader>
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex-1">
+            <CardTitle className="text-lg mb-1 group-hover:text-primary transition-colors">
+              {classData.subject}
+            </CardTitle>
+            <CardDescription className="font-mono text-sm">{classData.code}</CardDescription>
+          </div>
+          <Badge
+            variant={isFull ? 'destructive' : classData.status === 'active' ? 'default' : 'secondary'}
+            className="shrink-0"
+          >
+            {isFull ? 'Full' : classData.status === 'active' ? 'Active' : 'Inactive'}
+          </Badge>
+        </div>
+      </CardHeader>
+
+      <CardContent className="space-y-3">
+        <p className="text-sm line-clamp-2 text-gradient-700">{classData.description}</p>
+
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-sm">
+            <Users className="w-4 h-4 text-primary" />
+            <span>
+              {classData.tutorName}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm">
+            <Calendar className="w-4 h-4 text-secondary" />
+            <span className="text-gradient-700">{classData.schedule}</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm">
+            <MapPin className="w-4 h-4 text-accent" />
+            <span className="text-gradient-700">{classData.location}</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm">
+            <Clock className="w-4 h-4 text-gradient-700" />
+            <span className="text-gradient-700">
+              {classData.startDate} - {classData.endDate}
+            </span>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-border/50">
+          <div className="text-sm">
+            <span className="font-semibold text-black">{classData.enrolledStudents}</span>
+            <span className="text-gradient-700">/{classData.maxStudents} students</span>
+          </div>
+          {!isFull && spotsLeft <= 5 && (
+            <span className="text-xs text-accent-600 font-medium">
+              {spotsLeft} spots left
+            </span>
+          )}
+        </div>
+
+        <div className="flex flex-wrap gap-1.5 pt-2">
+          {classData.tags.map((tag) => (
+            <Badge key={tag} variant="outline" className="text-xs">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+
+      <CardFooter className="gap-2">
+        <Link to={`/student/classes/${classData.id}`} className="flex-1">
+          <Button variant="outline" className="w-full">
+            View Details
+          </Button>
+        </Link>
+        {showEnrollButton && !enrolled && (
+          <Button
+            className={cn('flex-1', isFull && 'opacity-50 cursor-not-allowed')}
+            disabled={isFull}
+          >
+            {isFull ? 'Class Full' : 'Enroll'}
+          </Button>
+        )}
+        {enrolled && (
+          <Button className="flex-1" variant="secondary">
+            Enrolled
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default ClassCard;
