@@ -122,7 +122,7 @@ export const mockClasses: Class[] = [
   },
   {
     id: 'C002',
-    subject: 'Database Management Systems',
+    subject: 'Database Systems',
     code: 'CO2013',
     tutorId: 'T002',
     tutorName: 'MSc. Lê Văn C',

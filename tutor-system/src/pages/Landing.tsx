@@ -1,8 +1,8 @@
 import { Button } from '../component/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../component/ui/card';
-import { GraduationCap, BookOpen, Users, BarChart3, CalendarDays, ClipboardClock, SquareLibrary, BookCheck, type LucideIcon } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, BarChart3, CalendarDays, ClipboardClock, SquareLibrary, BookCheck} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { getCurrentUser, hasRole } from '../Authentic/AuthProvider';
+import { getCurrentUser} from '../Authentic/AuthProvider';
 
 export function Landing() {
   function AuthLink() {
@@ -28,22 +28,13 @@ export function Landing() {
       );
     }
   }
-  interface RoleItem {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  link: string;
-  gradient: string;
-  role: 'student' | 'tutor' | 'admin';
-}
-  const roles : RoleItem[] = [
+  const roles = [
     {
       title: 'Student',
       description: 'Search and enroll in tutoring classes, access learning materials, and track your progress',
       icon: GraduationCap,
       link: '/student/dashboard',
       gradient: 'from-primary to-secondary',
-      role: 'student',
     },
     {
       title: 'Tutor',
@@ -51,7 +42,6 @@ export function Landing() {
       icon: BookOpen,
       link: '/tutor/dashboard',
       gradient: 'from-secondary to-accent',
-      role: 'tutor',
     },
     {
       title: 'Administrator',
@@ -59,10 +49,8 @@ export function Landing() {
       icon: BarChart3,
       link: '/admin/dashboard',
       gradient: 'from-accent to-primary',
-      role: 'admin',
     },
   ];
-  
 
   return (
     <>
@@ -110,7 +98,6 @@ export function Landing() {
             <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {roles.map((role) => {
                 const Icon = role.icon;
-                if(hasRole(role.role)){
                   return (
                     <Link key={role.title} to={role.link}>
                       <Card className="group hover:shadow-card-hover transition-all duration-300 cursor-pointer border-border/50 bg-gradient-card h-full">
@@ -133,30 +120,6 @@ export function Landing() {
                       </Card>
                     </Link>
                   );
-                }else{
-                  return (
-                    <Link key={role.title} to={'/login'}>
-                      <Card className="group hover:shadow-card-hover transition-all duration-300 cursor-pointer border-border/50 bg-gradient-card h-full">
-                        <CardHeader>
-                          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${role.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                            <Icon className="w-7 h-7 text-white" />
-                          </div>
-                          <CardTitle className="text-2xl group-hover:text-primary transition-colors">
-                            {role.title}
-                          </CardTitle>
-                          <CardDescription className="text-base">
-                            {role.description}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                            Access {role.title} Portal
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                }
               })}
             </div>
           </div>
