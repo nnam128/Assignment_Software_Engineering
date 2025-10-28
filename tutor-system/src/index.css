@@ -41,6 +41,10 @@
   --color-tertiary-100: #afb9ca;
   --color-tertiary-000: #ebeff3;
 
+  /* Background */
+  --color-background: #f4f8fa;
+  
+
   /* Shadow */
   --drop-shadow-secondary-1: 4px 4px 0px rgba(249, 186, 8, 1);
   --drop-shadow-secondary-2: 8px 8px 0px rgba(249, 186, 8, 1);

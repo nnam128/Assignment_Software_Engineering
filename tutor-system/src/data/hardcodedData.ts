@@ -87,7 +87,7 @@ export const mockUsers: User[] = [
   {
     id: 'T001',
     name: 'Dr. Trần Thị B',
-    email: 'tranthib@hcmut.edu.vn',
+    email: 'b.tranthi@hcmut.edu.vn',
     password: 'TranThiB',
     role: 'tutor',
     department: 'Computer Science',

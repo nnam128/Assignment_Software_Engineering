@@ -33,7 +33,7 @@ export function getCurrentUser(): User | null {
   }
 }
 
-export function hasRole(requiredRole: User["role"]): boolean {
+export function hasRole(requiredRole: User['role']): boolean {
   const user = getCurrentUser();
   return !!user && user.role === requiredRole;
 }
