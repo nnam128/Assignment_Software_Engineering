@@ -68,7 +68,7 @@ export interface ClassRequest {
   requestedBy: string[];
   studentCount: number;
   preferredSchedule: string;
-  status: 'pending' | 'approved' | 'assigned';
+  status: 'pending' | 'approved';
   description: string;
   createdDate: string;
 }
@@ -162,7 +162,7 @@ export const mockClasses: Class[] = [
     enrolledStudents: 22,
     schedule: 'Wednesday 15:00-17:00',
     location: 'Online - Zoom',
-    status: 'active',
+    status: 'inactive',
     description: 'Network protocols, TCP/IP, routing, network security, and practical lab sessions.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
@@ -194,7 +194,7 @@ export const mockClasses: Class[] = [
     enrolledStudents: 8,
     schedule: 'Tuesday 17:00-19:00',
     location: 'H2-201',
-    status: 'active',
+    status: 'inactive',
     description: 'Full-stack web development with React, Node.js, databases, and deployment strategies.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
@@ -381,6 +381,39 @@ export const mockClassRequests: ClassRequest[] = [
     status: 'approved',
     description: 'AWS, Azure, Docker, Kubernetes - comprehensive cloud architecture and DevOps practices.',
     createdDate: '2025-01-20',
+  },
+  {
+    id: 'CR003',
+    subject: 'Blockchain Technology',
+    code: 'CO4074',
+    requestedBy: ['S002', 'S005', 'S007', 'S009', 'S012', 'S015', 'S018'],
+    studentCount: 7,
+    preferredSchedule: 'Tuesday 17:00-19:00',
+    status: 'pending',
+    description: 'Students requesting a class on blockchain fundamentals, smart contracts, and cryptocurrency.',
+    createdDate: '2025-01-25',
+  },
+  {
+    id: 'CR004',
+    subject: 'Blockchain Technology',
+    code: 'CO4074',
+    requestedBy: ['S002', 'S005', 'S007', 'S009', 'S012', 'S015', 'S018'],
+    studentCount: 7,
+    preferredSchedule: 'Tuesday 17:00-19:00',
+    status: 'pending',
+    description: 'Students requesting a class on blockchain fundamentals, smart contracts, and cryptocurrency.',
+    createdDate: '2025-01-25',
+  },
+  {
+    id: 'CR005',
+    subject: 'Blockchain Technology',
+    code: 'CO4074',
+    requestedBy: ['S002', 'S005', 'S007', 'S009', 'S012', 'S015', 'S018'],
+    studentCount: 7,
+    preferredSchedule: 'Tuesday 17:00-19:00',
+    status: 'pending',
+    description: 'Students requesting a class on blockchain fundamentals, smart contracts, and cryptocurrency.',
+    createdDate: '2025-01-25',
   },
 ];
 

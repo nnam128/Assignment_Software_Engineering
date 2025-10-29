@@ -155,13 +155,6 @@ export function Landing() {
             </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="py-8 px-4 border-t border-border bg-card">
-          <div className="container mx-auto text-center">
-            <p>Assignment Project of Software Engineering</p>
-          </div>
-        </footer>
       </div>
     </>
   );

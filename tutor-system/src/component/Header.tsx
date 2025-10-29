@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Calendar, Home, MessageSquare, Search, User, GraduationCap, BarChart3, LogIn, LogOut } from 'lucide-react';
+import { BookOpen, Calendar, Home, MessageSquare, Search, GraduationCap, BarChart3, LogIn, LogOut } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { getCurrentUser, logout } from '../Authentic/AuthProvider';
 
@@ -43,7 +43,6 @@ export function Header({ children, role }: LayoutProps){
     { path: '/student/classes', icon: Search, label: 'Find Classes' },
     { path: '/student/my-classes', icon: BookOpen, label: 'My Classes' },
     { path: '/student/schedule', icon: Calendar, label: 'Schedule' },
-    { path: '/student/profile', icon: User, label: 'Profile' },
   ];
 
   const tutorNav = [
@@ -51,7 +50,6 @@ export function Header({ children, role }: LayoutProps){
     { path: '/tutor/classes', icon: BookOpen, label: 'My Classes' },
     { path: '/tutor/schedule', icon: Calendar, label: 'Schedule' },
     { path: '/tutor/students', icon: GraduationCap, label: 'Students' },
-    { path: '/tutor/profile', icon: User, label: 'Profile' },
   ];
 
   const adminNav = [
@@ -110,7 +108,14 @@ export function Header({ children, role }: LayoutProps){
         {children}
       </main>
 
-      <div className='h-30'> </div>
+      {/* Footer */}
+      <footer className="py-4 px-4 border-t border-border bg-card mt-10">
+        <div className="container mx-auto text-center">
+          <p>Assignment Project of Software Engineering</p>
+        </div>
+      </footer>
+
+      <div className='md:hidden h-20'> </div>
       {/* Mobile Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border bg-white backdrop-blur-sm z-50">
         <div className="flex items-center justify-around px-2 py-2">

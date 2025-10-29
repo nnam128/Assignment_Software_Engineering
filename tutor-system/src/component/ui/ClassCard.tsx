@@ -86,7 +86,7 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false }: Cl
       </CardContent>
 
       <CardFooter className="gap-2">
-        <Link to={`/student/classes/${classData.id}`} className="flex-1">
+        <Link to={`/student/classes`} className="flex-1">
           <Button variant="outline" className="w-full">
             View Details
           </Button>

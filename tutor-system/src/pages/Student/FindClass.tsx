@@ -7,6 +7,9 @@ import { Card, CardContent } from '../../component/ui/card';
 import { mockClasses } from '../../data/hardcodedData';
 import { Search, Filter, Plus } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Label } from '../../component/ui/label';
+
 
 export function StudentClasses(){
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,8 +17,9 @@ export function StudentClasses(){
 
   const filters = [
     { value: 'all', label: 'All Classes' },
-    { value: 'active', label: 'Active' },
     { value: 'available', label: 'Available' },
+    { value: 'active', label: 'Active' },
+    { value: 'inactive', label: 'Inactive' },
     { value: 'full', label: 'Full' },
   ];
 
@@ -23,7 +27,7 @@ export function StudentClasses(){
     const matchesSearch = cls.subject.toLowerCase().includes(searchQuery.toLowerCase()) || cls.code.toLowerCase().includes(searchQuery.toLowerCase()) 
                         || cls.tutorName.toLowerCase().includes(searchQuery.toLowerCase())|| cls.tutorId.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = selectedFilter === 'all' ||
-                          (selectedFilter === 'available' && cls.status === 'active' && cls.enrolledStudents < cls.maxStudents) ||
+                          (selectedFilter === 'available' && (cls.status === 'active' || cls.status === 'inactive') && cls.enrolledStudents < cls.maxStudents) ||
                           cls.status === selectedFilter;
     return matchesSearch && matchesFilter;
   });
@@ -39,19 +43,23 @@ export function StudentClasses(){
               Browse and enroll in available tutoring classes
             </p>
           </div>
-          <Button className="gap-2">
-            <Plus className="w-4 h-4" />
-            Request New Class
-          </Button>
+          <Link to={`/student/request`}>
+            <Button className="gap-2">
+              <Plus className="w-4 h-4" />
+              Request New Class
+            </Button>
+          </Link>
         </div>
 
         {/* Search and Filters */}
         <Card className=" bg-white">
           <CardContent className="pt-6 space-y-4">
-            <div className="flex flex-col md:flex-row gap-3">
+            <Label htmlFor='class-search'>Search Class *</Label>
+            <div className="flex flex-col md:flex-row gap-3 mt-2">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gradient-700" />
                 <Input
+                  id='class-search'
                   placeholder="Search by subject or code..."
                   className="pl-10"
                   value={searchQuery}

@@ -71,4 +71,100 @@
   --drop-shadow-secondary-1: 4px 4px 0px rgba(249, 186, 8, 1);
   --drop-shadow-secondary-2: 8px 8px 0px rgba(249, 186, 8, 1);
   --drop-shadow-secondary-4: 16px 16px 0px rgba(249, 186, 8, 1);
+
+  /* Animation Keyframes */
+  @keyframes in {
+    from {
+      opacity: 0;
+      transform: translateY(calc(var(--radix-toast-swipe-end-y, 0) + 20px)) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes out {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px) scale(0.97);
+    }
+  }
+
+  @keyframes slide-in-from-top-full {
+    from {
+      opacity: 0;
+      transform: translateY(-100%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slide-in-from-bottom-full {
+    from {
+      opacity: 0;
+      transform: translateY(100%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slide-out-to-right-full {
+    from {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%) scale(0.96);
+    }
+  }
+
+  @keyframes fade-out-80 {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  --animate-in: in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-out: out 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-slide-in-from-top-full: slide-in-from-top-full 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-in-from-bottom-full: slide-in-from-bottom-full 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-out-to-right-full: slide-out-to-right-full 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-fade-out-80: fade-out-80 0.25s ease-in;
+  --animate-accordion-down: accordion-down 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-accordion-up: accordion-up 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
