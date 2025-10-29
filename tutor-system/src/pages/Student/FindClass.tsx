@@ -101,6 +101,7 @@ export function StudentClasses(){
               key={cls.id}
               classData={cls}
               showEnrollButton={true}
+              enrolled = {cls.id === "C005" ? true : false}
             />
           ))}
         </div>

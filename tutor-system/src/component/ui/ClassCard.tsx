@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Calendar, MapPin, Users, Clock } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Link } from 'react-router-dom';
+import { useToast } from '../UseToast';
+
 
 interface ClassCardProps {
   classData: Class;
@@ -12,7 +14,17 @@ interface ClassCardProps {
   enrolled?: boolean;
 }
 
-const ClassCard = ({ classData, showEnrollButton = false, enrolled = false }: ClassCardProps) => {
+
+const ClassCard = ({ classData, showEnrollButton = false, enrolled = false}: ClassCardProps) => {
+  const { toast } = useToast();
+  
+  function handleEnroll(title: string, descrip: string): void{
+    toast({
+      title: title,
+      description: descrip,
+    });
+  }
+  
   const isFull = classData.status === 'full';
   const spotsLeft = classData.maxStudents - classData.enrolledStudents;
 
@@ -94,13 +106,25 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false }: Cl
         {showEnrollButton && !enrolled && (
           <Button
             className={cn('flex-1', isFull && 'opacity-50 cursor-not-allowed')}
-            disabled={isFull}
-          >
+            onClick={() => {
+              if (isFull) {
+                handleEnroll(
+                  "Class is full",
+                  "Please try again. You can register for another class or request a new one if you can't find a suitable class."
+                );
+              } else {
+                handleEnroll(
+                  "You have successfully submitted your join request.",
+                  "Click again if you wish to cancel."
+                );
+              }
+            }}
+            >
             {isFull ? 'Class Full' : 'Enroll'}
           </Button>
         )}
         {enrolled && (
-          <Button className="flex-1" variant="secondary">
+          <Button className="flex-1" variant="active" onClick={() => {handleEnroll("You have left this class.", "Click again if you wish to rejoin.")}}>
             Enrolled
           </Button>
         )}
