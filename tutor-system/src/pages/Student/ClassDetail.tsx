@@ -1,14 +1,18 @@
 import { useParams } from "react-router-dom";
-import WeeklyCalendar from "../../component/WeeklyCalendar";
-import { mockSessions } from "../../data/hardcodedData";
+import { mockPosts } from "../../data/hardcodedData";
+import { Community } from "../../component/Community";
 
 export function StudentClassDetail(){
   const { id } = useParams();
-  const session = mockSessions;
+  const classPosts = mockPosts.filter((p) => p.classId === id);
+  
     return(
       <>
+      <p>kaka</p>
         <h1>{id}</h1>
-        <WeeklyCalendar sessions={session}/>
+        <div className="p-20">
+        <Community classPosts = {classPosts} id = {id} />
+        </div>
       </>
     )
 }

@@ -47,6 +47,7 @@ export interface Post {
   authorName: string;
   authorRole: 'student' | 'tutor';
   content: string;
+  avatar?: string;
   timestamp: string;
   comments: Comment[];
   isPinned?: boolean;
@@ -58,6 +59,7 @@ export interface Comment {
   authorName: string;
   authorRole: 'student' | 'tutor';
   content: string;
+  avatar?: string;
   timestamp: string;
 }
 
@@ -447,6 +449,7 @@ export const mockPosts: Post[] = [
     authorId: 'T001',
     authorName: 'Dr. Trần Thị B',
     authorRole: 'tutor',
+    avatar: '/avatar-1.webp',
     content: 'Welcome to Data Structures and Algorithms class! Please review the syllabus and prepare for our first session on Binary Trees.',
     timestamp: '2025-01-28T10:00:00Z',
     isPinned: true,
