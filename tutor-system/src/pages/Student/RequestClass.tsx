@@ -72,7 +72,7 @@ function RequestClass(){
         {/* welcome */}
         <div>
           <h1 className="text-3xl font-bold mb-2">Request a Class</h1>
-          <p className="text-muted-foreground">
+          <p className="text-gradient-700">
             Can't find the class you need? Request a new one!
           </p>
         </div>
@@ -194,7 +194,7 @@ function RequestClass(){
           {/* display result */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredClasses.map((request) => (
-              <Card key={request.id} className="bg-gradient-card border-border/50">
+              <Card key={request.id}>
                 <CardHeader>
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
@@ -220,26 +220,26 @@ function RequestClass(){
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground">{request.description}</p>
+                  <p className="text-sm text-gradient-700">{request.description}</p>
                   
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm">
                       <Users className="w-4 h-4 text-primary" />
-                      <span className="text-foreground">
+                      <span className="text-black">
                         {request.studentCount} students interested
                       </span>
                     </div>
                     
                     <div className="flex items-center gap-2 text-sm">
                       <Clock className="w-4 h-4 text-secondary" />
-                      <span className="text-muted-foreground">
+                      <span className="text-gradient-700">
                         {request.preferredSchedule}
                       </span>
                     </div>
                     
                     <div className="flex items-center gap-2 text-sm">
                       <Calendar className="w-4 h-4 text-accent" />
-                      <span className="text-muted-foreground">
+                      <span className="text-gradient-700">
                         Requested on {request.createdDate}
                       </span>
                     </div>
