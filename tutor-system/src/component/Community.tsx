@@ -50,7 +50,7 @@ export function Community( {classPosts, id} : CommunityProps){
               placeholder="Share something with the class..."
               value={formData}
               onChange={handleChange}
-              className="min-h-[100px]"
+              className="min-h-[100px] mt-2"
               required
             />
             <div className="flex justify-end">
@@ -86,7 +86,7 @@ export function Community( {classPosts, id} : CommunityProps){
                           {new Date(post.timestamp).toLocaleDateString()}
                         </span>
                       </div>
-                      <p className="text-black mt-2">{post.content}</p>
+                      <p className="text-black mt-2 text-sm md:text-base">{post.content}</p>
                     </div>
 
                     {/* Comments */}
@@ -111,7 +111,7 @@ export function Community( {classPosts, id} : CommunityProps){
                                   {new Date(comment.timestamp).toLocaleDateString()}
                                 </span>
                               </div>
-                              <p className="text-sm text-black mt-1">{comment.content}</p>
+                              <p className="text-xs md:text-sm text-black mt-1">{comment.content}</p>
                             </div>
                           </div>
                         ))}

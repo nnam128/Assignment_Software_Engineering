@@ -58,7 +58,7 @@ export function StudentDashboard() {
             <CardContent className="space-y-4">
               {enrolledClasses.map((cls) => (
                 <Link key={cls.id} to={`/student/classes/${cls.id}`}>
-                  <div className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer bg-card mb-4">
+                  <div className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer mb-4">
                     <div className="flex items-start justify-between mb-2">
                       <div>
                         <h4 className="font-semibold text-black">{cls.subject}</h4>
@@ -103,7 +103,7 @@ export function StudentDashboard() {
                 const classData = mockClasses.find(c => c.id === session.classId);
                 return (
                   <Link key={session.id} to={`/student/classes/${session.classId}/${session.id}`}>
-                    <div key={session.id} className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer bg-card mb-4">
+                    <div key={session.id} className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer mb-4">
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <h4 className="font-semibold text-black">{session.title}</h4>

@@ -38,6 +38,9 @@ export interface Session {
   status: 'scheduled' | 'completed' | 'cancelled';
   attendanceCount?: number;
   totalStudents?: number;
+  preparationNotes?: string;
+  homeworkNotes?: string;
+  resources?: string[];
 }
 
 export interface Post {
@@ -216,8 +219,11 @@ export const mockSessions: Session[] = [
     duration: '2 hours',
     location: 'H1-201',
     type: 'offline',
-    status: 'scheduled',
+    status: 'completed',
     totalStudents: 20,
+    preparationNotes: 'Review binary tree concepts and prepare notes.',
+    homeworkNotes: 'Draw a binary tree and calculate its height.',
+    resources: ['slides/BinaryTrees.doc']
   },
   {
     id: 'SE002',
@@ -229,7 +235,7 @@ export const mockSessions: Session[] = [
     location: 'H1-201',
     type: 'offline',
     status: 'cancelled',
-    totalStudents: 20,
+    totalStudents: 20
   },
   {
     id: 'SE003',
@@ -240,9 +246,11 @@ export const mockSessions: Session[] = [
     duration: '2 hours',
     location: 'H1-201',
     type: 'offline',
-    status: 'completed',
+    status: 'scheduled',
     attendanceCount: 18,
     totalStudents: 20,
+    preparationNotes: 'Review binary tree concepts and prepare notes.',
+    resources: ['files/DP_Exercises.pdf', 'files/Tree_Exercises.csv']
   },
 
   // ===== C002 =====
@@ -255,8 +263,10 @@ export const mockSessions: Session[] = [
     duration: '2 hours',
     location: 'H2-305',
     type: 'offline',
-    status: 'scheduled',
+    status: 'completed',
     totalStudents: 25,
+    preparationNotes: 'Install MySQL and review SELECT, INSERT, UPDATE.',
+    resources: ['books/SQLFundamentals.pdf']
   },
   {
     id: 'SE005',
@@ -269,6 +279,7 @@ export const mockSessions: Session[] = [
     type: 'offline',
     status: 'cancelled',
     totalStudents: 25,
+    homeworkNotes: 'Normalize the database tables according to 3NF.'
   },
   {
     id: 'SE006',
@@ -282,6 +293,9 @@ export const mockSessions: Session[] = [
     status: 'completed',
     attendanceCount: 22,
     totalStudents: 25,
+    preparationNotes: 'Review indexing and query optimization techniques.',
+    homeworkNotes: 'Optimize previous SQL queries.',
+    resources: ['files/SQL_Optimization_Tips.pdf']
   },
 
   // ===== C003 =====
@@ -294,8 +308,8 @@ export const mockSessions: Session[] = [
     duration: '3 hours',
     location: 'H3-102',
     type: 'offline',
-    status: 'scheduled',
-    totalStudents: 18,
+    status: 'completed',
+    totalStudents: 18
   },
   {
     id: 'SE008',
@@ -306,9 +320,11 @@ export const mockSessions: Session[] = [
     duration: '2 hours',
     location: 'H3-102',
     type: 'offline',
-    status: 'completed',
+    status: 'scheduled',
     attendanceCount: 17,
     totalStudents: 18,
+    preparationNotes: 'Review Scrum principles and roles.',
+    resources: ['slides/Scrum_Practices.pdf']
   },
   {
     id: 'SE009',
@@ -320,7 +336,7 @@ export const mockSessions: Session[] = [
     location: 'H3-102',
     type: 'offline',
     status: 'cancelled',
-    totalStudents: 18,
+    totalStudents: 18
   },
 
   // ===== C004 =====
@@ -336,6 +352,9 @@ export const mockSessions: Session[] = [
     status: 'completed',
     attendanceCount: 20,
     totalStudents: 22,
+    preparationNotes: 'Read basic network security concepts.',
+    homeworkNotes: 'Check vulnerabilities in a small network lab.',
+    resources: ['files/NetworkSecurityIntro.pdf']
   },
   {
     id: 'SE011',
@@ -347,7 +366,7 @@ export const mockSessions: Session[] = [
     location: 'Online - Zoom',
     type: 'online',
     status: 'scheduled',
-    totalStudents: 22,
+    totalStudents: 22
   },
   {
     id: 'SE012',
@@ -360,6 +379,8 @@ export const mockSessions: Session[] = [
     type: 'online',
     status: 'cancelled',
     totalStudents: 22,
+    homeworkNotes: 'Write a short report on defense strategies.',
+    resources: ['files/Defense_Strategies.pdf']
   },
 
   // ===== C005 =====
@@ -375,6 +396,9 @@ export const mockSessions: Session[] = [
     status: 'completed',
     attendanceCount: 10,
     totalStudents: 12,
+    preparationNotes: 'Review perceptrons and activation functions.',
+    homeworkNotes: 'Implement a simple neural network.',
+    resources: ['slides/NeuralNetworksIntro.pdf']
   },
   {
     id: 'SE014',
@@ -386,7 +410,7 @@ export const mockSessions: Session[] = [
     location: 'H6-401',
     type: 'offline',
     status: 'scheduled',
-    totalStudents: 12,
+    totalStudents: 12
   },
   {
     id: 'SE015',
@@ -399,6 +423,8 @@ export const mockSessions: Session[] = [
     type: 'offline',
     status: 'cancelled',
     totalStudents: 12,
+    homeworkNotes: 'Practice building a basic CNN model.',
+    resources: ['files/CNN_Workshop.pdf']
   },
 
   // ===== C006 =====
@@ -411,8 +437,9 @@ export const mockSessions: Session[] = [
     duration: '2 hours',
     location: 'H4-210',
     type: 'offline',
-    status: 'scheduled',
+    status: 'completed',
     totalStudents: 20,
+    preparationNotes: 'Review basic cloud services.'
   },
   {
     id: 'SE017',
@@ -423,9 +450,11 @@ export const mockSessions: Session[] = [
     duration: '2 hours',
     location: 'H4-210',
     type: 'offline',
-    status: 'completed',
+    status: 'scheduled',
     attendanceCount: 18,
     totalStudents: 20,
+    preparationNotes: 'Sign up for AWS and review EC2/S3.',
+    resources: ['slides/AWS_Fundamentals.pdf', 'files/AWS_Practice.pdf']
   },
   {
     id: 'SE018',
@@ -437,9 +466,9 @@ export const mockSessions: Session[] = [
     location: 'H4-210',
     type: 'offline',
     status: 'cancelled',
-    totalStudents: 20,
-  },
-]
+    totalStudents: 20
+  }
+];
 
 // Mock Posts
 export const mockPosts: Post[] = [

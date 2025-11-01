@@ -38,7 +38,7 @@ function WeeklyCalendar({ sessions }: WeeklyCalendarProps){
   function getStatusColor(status: string){
     switch (status) {
       case 'completed':
-        return 'bg-accent/20 border-accent text-accent';
+        return 'bg-secondary-700/20 border-secondary-700 text-secondary-700';
       case 'scheduled':
         return 'bg-primary/20 border-primary text-primary';
       case 'cancelled':
@@ -67,8 +67,8 @@ function WeeklyCalendar({ sessions }: WeeklyCalendarProps){
           {/* grid */}
           <div className="relative">
             {hours.map((hour) => (
-              <div key={hour} className="grid grid-cols-8 border-b border-grid hover:bg-gradient-50 transition-colors h-[50px] overflow-visible">
-                <div className="px-3 text-xs text-gradient-700 border-r border-grid bg-white flex items-center">
+              <div key={hour} className="grid grid-cols-8 border-b bg-white border-grid hover:bg-gradient-50 transition-colors h-[50px] overflow-visible">
+                <div className="px-3 text-xs text-gradient-700 border-r border-grid flex  items-center">
                   {hour.toString().padStart(2, '0')}:00
                 </div>
                 {weekDays.map((_, dayIndex) => (
