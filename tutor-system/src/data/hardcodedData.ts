@@ -171,7 +171,7 @@ export const mockClasses: Class[] = [
     tutorName: 'Dr. Phạm Minh D',
     maxStudents: 20,
     enrolledStudents: 15,
-    schedule: 'Friday 09:00-12:00',
+    schedule: 'Wednesday, Friday 09:00-12:00',
     location: 'H3-102',
     status: 'active',
     description: 'Software development lifecycle, design patterns, Agile methodologies, and project management.',

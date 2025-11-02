@@ -2,20 +2,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Badge } from '../../component/ui/badge';
 import { Button } from '../../component/ui/button';
 import { mockClasses, mockSessions } from '../../data/hardcodedData';
-import { BookOpen, Calendar, Clock, TrendingUp, Users } from 'lucide-react';
+import { BookOpen, Calendar, Clock, MapPinPen, TrendingUp, Users } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentUser, hasRole } from '../../Authentic/AuthProvider';
 import { useEffect } from 'react';
 import { Header } from '../../component/Header';
 
-export function StudentDashboard() {
-  const enrolledClasses = mockClasses.slice(0, 3);
+export function TuTorDashboard() {
+  const teachingClasses = mockClasses.slice(0, 3);
   const upcomingSessions = mockSessions.filter(s => s.status === 'scheduled').slice(0, 3);
   
   const navigate = useNavigate();
   const currentUser = getCurrentUser();
   useEffect(() => {
-    if (!currentUser || !hasRole('student')) {
+    if (!currentUser || !hasRole('tutor')) {
       navigate('/');
     }
   }, [currentUser, navigate]);
@@ -24,7 +24,7 @@ export function StudentDashboard() {
 
 
   return (
-    <Header role="student">
+    <Header role="tutor">
       <div className="space-y-8">
         {/* Welcome */}
         <div>
@@ -32,7 +32,7 @@ export function StudentDashboard() {
             Welcome back, {currentUser.name}!
           </h1>
           <p className="text-gradient-700">
-            Track your classes, schedule, and academic progress
+            Manage your classes, schedule, and track student progress
           </p>
         </div>
 
@@ -47,16 +47,16 @@ export function StudentDashboard() {
                     <BookOpen className="w-5 h-5 text-primary" />
                     My Classes
                   </CardTitle>
-                  <CardDescription>Your enrolled tutoring classes</CardDescription>
+                  <CardDescription>Your active teaching classes</CardDescription>
                 </div>
-                <Link to="/student/my-classes">
+                <Link to="/tutor/my-classes">
                   <Button variant="ghost" size="sm">View All</Button>
                 </Link>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {enrolledClasses.map((cls) => (
-                <Link key={cls.id} to={`/student/classes/${cls.id}`}>
+              {teachingClasses.map((cls) => (
+                <Link key={cls.id} to={`/tutor/classes/${cls.id}`}>
                   <div className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer mb-4">
                     <div className="flex items-start justify-between mb-2">
                       <div>
@@ -65,14 +65,14 @@ export function StudentDashboard() {
                       </div>
                       <Badge variant="default">Active</Badge>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gradient-700">
+                    <div className="flex items-center justify-between gap-4 text-sm text-gradient-700">
                       <span className="flex items-center gap-1">
                         <Users className="w-3 h-3" />
-                        {cls.tutorName}
+                        {cls.enrolledStudents}/{cls.maxStudents} Student
                       </span>
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {cls.schedule.split(',')[0]}
+                        <MapPinPen className="w-3 h-3" />
+                        Location: {cls.location}
                       </span>
                     </div>
                   </div>
@@ -92,7 +92,7 @@ export function StudentDashboard() {
                   </CardTitle>
                   <CardDescription>Your scheduled tutoring sessions</CardDescription>
                 </div>
-                <Link to="/student/schedule">
+                <Link to="/tutor/schedule">
                   <Button variant="ghost" size="sm">View Schedule</Button>
                 </Link>
               </div>
@@ -138,22 +138,22 @@ export function StudentDashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <Link to="/student/classes">
+              <Link to="/tutor/create-class">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
                   <BookOpen className="w-4 h-4" />
-                  <span>Find Classes</span>
+                  <span>Create Classes</span>
                 </Button>
               </Link>
-              <Link to="/student/schedule">
+              <Link to="/tutor/schedule">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
                   <Calendar className="w-4 h-4" />
                   <span>View Schedule</span>
                 </Button>
               </Link >
-              <Link to="/student/request">
+              <Link to="/tutor/track-student">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
                   <Users className="w-4 h-4" />
-                  <span>Join Request</span>
+                  <span>Track Student</span>
                 </Button>
               </Link>
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
@@ -168,4 +168,4 @@ export function StudentDashboard() {
   );
 };
 
-export default StudentDashboard;
+export default TuTorDashboard;

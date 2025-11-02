@@ -17,7 +17,7 @@ function RequestClass(){
   const currentUser = getCurrentUser();
     useEffect(() => {
       if (!currentUser || !hasRole('student')) {
-        navigate('/login');
+        navigate('/');
       }
     }, [currentUser, navigate]);
   

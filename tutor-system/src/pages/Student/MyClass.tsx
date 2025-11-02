@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../../component/Header';
 import { mockClasses } from '../../data/hardcodedData';
-import { BookOpen, Search } from 'lucide-react';
+import { BookOpen, School, Search } from 'lucide-react';
 import { Input } from '../../component/ui/input';
 import { Badge } from '../../component/ui/badge';
 import ClassCard from '../../component/ui/ClassCard';
@@ -15,7 +15,7 @@ const StudentMyClasses = () => {
   const currentUser = getCurrentUser();
   useEffect(() => {
     if (!currentUser || !hasRole('student')) {
-      navigate('/login');
+      navigate('/');
     }
   }, [currentUser, navigate]);
 
@@ -58,7 +58,7 @@ const StudentMyClasses = () => {
           </Card>
           <Card>
             <CardHeader className="pb-2">
-              <BookOpen className='w-5 h-5 text-secondary' />
+              <School className='w-5 h-5 text-secondary' />
               <CardDescription>Active Classes</CardDescription>
             </CardHeader>
             <CardContent>
