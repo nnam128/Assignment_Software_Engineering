@@ -94,7 +94,7 @@ export function Community( {classPosts, id} : CommunityProps){
                       <div className="pl-4 border-l-2 border-gradient space-y-3 mt-3">
                         {post.comments.map((comment) => (
                           <div key={comment.id} className="flex items-start gap-2">
-                            <AvatarFrame className="w-8 h-8 shrink-0">
+                            <AvatarFrame className="shrink-0">
                               {
                               comment.avatar ? <Avatar src={`${comment.avatar}`}/> :
                               <AvatarName>

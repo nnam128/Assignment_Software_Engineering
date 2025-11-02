@@ -1,8 +1,8 @@
-import { BookAlert, Calendar, Clock } from "lucide-react";
+import { BookAlert, Calendar, Clock, EllipsisVertical } from "lucide-react";
 import type { Session } from "../data/hardcodedData";
 import { Card, CardTitle, CardHeader, CardDescription, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { FileFrame, FileGrid, FileIng, FileName } from "./ui/file";
+import { FileDate, FileFrame, FileGrid, FileIng, FileName, FileSize } from "./ui/file";
 
 interface SessionProps{
   sessions: Session[],
@@ -10,9 +10,9 @@ interface SessionProps{
 
 export function SessionNote({sessions} : SessionProps){
   function getFileType(s: string){
-    const TypeMatch = s.match(/^(.+)\/([^/]+)\.([^.]+)$/);
+    const TypeMatch = s.match(/([^/]+)\.([^.]+)$/);
 
-    const type = TypeMatch ? TypeMatch[3] : "la"
+    const type = TypeMatch ? TypeMatch[2] : "la"
     let src ="";
     switch(type){
       case 'doc':
@@ -24,12 +24,12 @@ export function SessionNote({sessions} : SessionProps){
       case "pdf":
         src= "/pdf.png";
         break;
-      case "la":
+      default:
         src = "/file.png";
         break;
     }
     return{
-      name: TypeMatch ? TypeMatch[2] : undefined,
+      name: TypeMatch ? TypeMatch[0] : undefined,
       src: src,
     };
   }
@@ -37,14 +37,21 @@ export function SessionNote({sessions} : SessionProps){
     return(
       <>
       <h4 className="font-semibold text-tertiary my-3">Attacthment</h4>
-      <FileGrid>
+      <FileGrid  className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-items-center">
         
-        {sessions.resources?.map((file)=>{
-          const {name, src} = getFileType(file);
+        {sessions.resources?.map((file, index)=>{
+          const {name, src} = getFileType(file.name);
           return(
-            <FileFrame>
-              <FileIng src={src} />
+            <FileFrame key={index}>
+              <div className="flex justify-between px-2">
+                <FileIng src={src} />
+                <div className="flex flex-col justify-center item-center gap-2">
+                  <div className="flex justify-end items-end"><EllipsisVertical className="w-8 h-8 text-gradient-700" /></div>
+                  <FileSize>{file.size}</FileSize>
+                </div>
+              </div>
               <FileName>{name}</FileName>
+              <FileDate>{file.date}</FileDate>
             </FileFrame>
           )}
         )}
@@ -59,7 +66,7 @@ export function SessionNote({sessions} : SessionProps){
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 mb-2">
                   <Calendar className="w-5 h-5 text-secondary" />
                   Sessions
                 </CardTitle>
@@ -84,11 +91,11 @@ export function SessionNote({sessions} : SessionProps){
                     </div>
                     <div className="flex items-center gap-4 text-sm text-gradient-700">
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
+                        <Calendar className="min-w-3 min-h-3" />
                         {session.date}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
+                        <Clock className="min-w-3 min-h-3" />
                         {session.time}
                       </span>
                     </div>
@@ -99,7 +106,7 @@ export function SessionNote({sessions} : SessionProps){
                           <h4 className="font-semibold text-primary mb-3">Preparation</h4>
                           <div className="flex items-center gap-4 text-sm text-black">
                             <span className="flex items-center gap-1">
-                              <BookAlert className="w-3 h-3" />
+                              <BookAlert className="min-w-3 min-h-3" />
                               {session.preparationNotes}
                             </span>
                           </div>
@@ -110,7 +117,7 @@ export function SessionNote({sessions} : SessionProps){
                           <h4 className="font-semibold text-secondary-700 mb-3">Homework</h4>
                           <div className="flex items-center gap-4 text-sm text-black">
                             <span className="flex items-center gap-1">
-                              <BookAlert className="w-3 h-3" />
+                              <BookAlert className="min-w-3 min-h-3" />
                               {session.preparationNotes}
                             </span>
                           </div>

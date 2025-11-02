@@ -24,6 +24,7 @@ export interface Class {
   startDate: string;
   endDate: string;
   tags: string[];
+  resource?: Resource[]
 }
 
 export interface Session {
@@ -40,7 +41,7 @@ export interface Session {
   totalStudents?: number;
   preparationNotes?: string;
   homeworkNotes?: string;
-  resources?: string[];
+  resources?: Resource[];
 }
 
 export interface Post {
@@ -77,6 +78,13 @@ export interface ClassRequest {
   description: string;
   createdDate: string;
 }
+
+export interface Resource {
+  name: string;
+  size: string;
+  date: string;
+}
+
 
 // Mock Users
 export const mockUsers: User[] = [
@@ -124,6 +132,13 @@ export const mockClasses: Class[] = [
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Programming', 'Algorithms', 'Core'],
+    resource: [
+      { name: 'files/DSA_Intro.pdf', size: '2 MB', date: '2025-02-01' },
+      { name: 'files/Sorting_Techniques.pdf', size: '3 MB', date: '2025-02-05' },
+      { name: 'files/Graph_Theory_Notes.docx', size: '1.5 MB', date: '2025-02-10' },
+      { name: 'files/Tree_Traversal_Lab.csv', size: '500 KB', date: '2025-02-15' },
+      { name: 'files/DSA_Assignment1.pdf', size: '2.5 MB', date: '2025-02-20' }
+    ]
   },
   {
     id: 'C002',
@@ -140,6 +155,13 @@ export const mockClasses: Class[] = [
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Database', 'SQL', 'Core'],
+    resource: [
+      { name: 'files/DB_Overview.pdf', size: '1.8 MB', date: '2025-02-02' },
+      { name: 'files/SQL_Practice.docx', size: '2.2 MB', date: '2025-02-07' },
+      { name: 'files/Normalization_Guide.pdf', size: '1.5 MB', date: '2025-02-10' },
+      { name: 'files/ERD_Examples.csv', size: '600 KB', date: '2025-02-12' },
+      { name: 'files/Transactions_Notes.pdf', size: '2 MB', date: '2025-02-18' }
+    ]
   },
   {
     id: 'C003',
@@ -156,6 +178,13 @@ export const mockClasses: Class[] = [
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['SDLC', 'Design Patterns', 'Project'],
+    resource: [
+      { name: 'files/SDLC_Overview.pdf', size: '2 MB', date: '2025-02-03' },
+      { name: 'files/UML_Diagrams.pptx', size: '3 MB', date: '2025-02-08' },
+      { name: 'files/Design_Patterns_Summary.pdf', size: '2.5 MB', date: '2025-02-13' },
+      { name: 'files/Agile_Methods.docx', size: '1.8 MB', date: '2025-02-16' },
+      { name: 'files/Project_Management_Tools.pdf', size: '2.2 MB', date: '2025-02-22' }
+    ]
   },
   {
     id: 'C004',
@@ -172,6 +201,13 @@ export const mockClasses: Class[] = [
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Networks', 'Protocols', 'Security'],
+    resource: [
+      { name: 'files/Network_Basics.pdf', size: '1.5 MB', date: '2025-02-04' },
+      { name: 'files/TCPIP_Layers.pdf', size: '2 MB', date: '2025-02-09' },
+      { name: 'files/Routing_Algorithms.docx', size: '1.2 MB', date: '2025-02-14' },
+      { name: 'files/Security_Practices.pdf', size: '2.3 MB', date: '2025-02-18' },
+      { name: 'files/Lab_Exercises.csv', size: '700 KB', date: '2025-02-23' }
+    ]
   },
   {
     id: 'C005',
@@ -188,6 +224,13 @@ export const mockClasses: Class[] = [
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['AI', 'ML', 'Advanced'],
+    resource: [
+      { name: 'files/ML_Introduction.pdf', size: '2.1 MB', date: '2025-02-02' },
+      { name: 'files/Neural_Networks.docx', size: '2.8 MB', date: '2025-02-06' },
+      { name: 'files/Deep_Learning_Tutorial.pdf', size: '3 MB', date: '2025-02-11' },
+      { name: 'files/ML_Lab_Exercises.csv', size: '800 KB', date: '2025-02-17' },
+      { name: 'files/ML_Project_Guide.pdf', size: '2.4 MB', date: '2025-02-21' }
+    ]
   },
   {
     id: 'C006',
@@ -204,7 +247,14 @@ export const mockClasses: Class[] = [
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Web', 'Frontend', 'Backend'],
-  },
+    resource: [
+      { name: 'files/HTML_CSS_Basics.pdf', size: '1.6 MB', date: '2025-02-03' },
+      { name: 'files/React_Guide.pdf', size: '2.5 MB', date: '2025-02-08' },
+      { name: 'files/NodeJS_Notes.docx', size: '2.2 MB', date: '2025-02-12' },
+      { name: 'files/Database_Integration.pdf', size: '2.7 MB', date: '2025-02-17' },
+      { name: 'files/Deployment_Tutorial.pdf', size: '1.9 MB', date: '2025-02-22' }
+    ]
+  }
 ];
 
 // Mock Sessions
@@ -223,7 +273,9 @@ export const mockSessions: Session[] = [
     totalStudents: 20,
     preparationNotes: 'Review binary tree concepts and prepare notes.',
     homeworkNotes: 'Draw a binary tree and calculate its height.',
-    resources: ['slides/BinaryTrees.doc']
+    resources: [
+      { name: 'slides/BinaryTrees.doc', size: '1.2 MB', date: '2025-02-01' }
+    ]
   },
   {
     id: 'SE002',
@@ -250,7 +302,10 @@ export const mockSessions: Session[] = [
     attendanceCount: 18,
     totalStudents: 20,
     preparationNotes: 'Review binary tree concepts and prepare notes.',
-    resources: ['files/DP_Exercises.pdf', 'files/Tree_Exercises.csv']
+    resources: [
+      { name: 'files/DP_Exercises.pdf', size: '2 MB', date: '2025-02-04' },
+      { name: 'files/Tree_Exercises.csv', size: '700 KB', date: '2025-02-05' }
+    ]
   },
 
   // ===== C002 =====
@@ -266,7 +321,9 @@ export const mockSessions: Session[] = [
     status: 'completed',
     totalStudents: 25,
     preparationNotes: 'Install MySQL and review SELECT, INSERT, UPDATE.',
-    resources: ['books/SQLFundamentals.pdf']
+    resources: [
+      { name: 'books/SQLFundamentals.pdf', size: '3 MB', date: '2025-02-02' }
+    ]
   },
   {
     id: 'SE005',
@@ -295,7 +352,9 @@ export const mockSessions: Session[] = [
     totalStudents: 25,
     preparationNotes: 'Review indexing and query optimization techniques.',
     homeworkNotes: 'Optimize previous SQL queries.',
-    resources: ['files/SQL_Optimization_Tips.pdf']
+    resources: [
+      { name: 'files/SQL_Optimization_Tips.pdf', size: '2.5 MB', date: '2025-02-06' }
+    ]
   },
 
   // ===== C003 =====
@@ -324,7 +383,9 @@ export const mockSessions: Session[] = [
     attendanceCount: 17,
     totalStudents: 18,
     preparationNotes: 'Review Scrum principles and roles.',
-    resources: ['slides/Scrum_Practices.pdf']
+    resources: [
+      { name: 'slides/Scrum_Practices.pdf', size: '1.8 MB', date: '2025-02-05' }
+    ]
   },
   {
     id: 'SE009',
@@ -354,7 +415,9 @@ export const mockSessions: Session[] = [
     totalStudents: 22,
     preparationNotes: 'Read basic network security concepts.',
     homeworkNotes: 'Check vulnerabilities in a small network lab.',
-    resources: ['files/NetworkSecurityIntro.pdf']
+    resources: [
+      { name: 'files/NetworkSecurityIntro.pdf', size: '2 MB', date: '2025-02-03' }
+    ]
   },
   {
     id: 'SE011',
@@ -380,7 +443,9 @@ export const mockSessions: Session[] = [
     status: 'cancelled',
     totalStudents: 22,
     homeworkNotes: 'Write a short report on defense strategies.',
-    resources: ['files/Defense_Strategies.pdf']
+    resources: [
+      { name: 'files/Defense_Strategies.pdf', size: '2.3 MB', date: '2025-02-06' }
+    ]
   },
 
   // ===== C005 =====
@@ -398,7 +463,9 @@ export const mockSessions: Session[] = [
     totalStudents: 12,
     preparationNotes: 'Review perceptrons and activation functions.',
     homeworkNotes: 'Implement a simple neural network.',
-    resources: ['slides/NeuralNetworksIntro.pdf']
+    resources: [
+      { name: 'slides/NeuralNetworksIntro.pdf', size: '2.1 MB', date: '2025-02-03' }
+    ]
   },
   {
     id: 'SE014',
@@ -424,7 +491,9 @@ export const mockSessions: Session[] = [
     status: 'cancelled',
     totalStudents: 12,
     homeworkNotes: 'Practice building a basic CNN model.',
-    resources: ['files/CNN_Workshop.pdf']
+    resources: [
+      { name: 'files/CNN_Workshop.pdf', size: '3 MB', date: '2025-02-06' }
+    ]
   },
 
   // ===== C006 =====
@@ -454,7 +523,10 @@ export const mockSessions: Session[] = [
     attendanceCount: 18,
     totalStudents: 20,
     preparationNotes: 'Sign up for AWS and review EC2/S3.',
-    resources: ['slides/AWS_Fundamentals.pdf', 'files/AWS_Practice.pdf']
+    resources: [
+      { name: 'slides/AWS_Fundamentals.pdf', size: '2 MB', date: '2025-02-04' },
+      { name: 'files/AWS_Practice.pdf', size: '2.3 MB', date: '2025-02-05' }
+    ]
   },
   {
     id: 'SE018',
