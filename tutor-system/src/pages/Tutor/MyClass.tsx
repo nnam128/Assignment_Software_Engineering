@@ -53,7 +53,7 @@ export function TutorMyClasses(){
               Manage your teaching classes and students
             </p>
           </div>
-          <Link to={`/tutor/new-class`}>
+          <Link to={`/tutor/create-class`}>
             <Button className="gap-2">
               <Plus className="w-4 h-4" />
               Open New Class

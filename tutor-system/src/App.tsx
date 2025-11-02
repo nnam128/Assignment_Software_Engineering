@@ -11,6 +11,7 @@ import StudentSchedule from './pages/Student/Schedule';
 import StudentMyClasses from './pages/Student/MyClass';
 import TuTorDashboard from './pages/Tutor/DashBoard';
 import TutorMyClasses from './pages/Tutor/MyClass';
+import CreateClass from './pages/Tutor/CreateClass';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/student/my-classes" element={<StudentMyClasses />} />
           <Route path="/tutor/dashboard" element={<TuTorDashboard />} />
           <Route path="/tutor/classes" element={<TutorMyClasses />} />
+          <Route path="/tutor/create-class" element={<CreateClass />} />
         </Routes>
       </BrowserRouter>
     </>
