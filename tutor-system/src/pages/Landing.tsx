@@ -56,14 +56,14 @@ export function Landing() {
     <>
       <div className="min-h-screen bg-background">
         {/* intro Section */}
-        <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-r from-primary via-primary-500 via-primary-300 to-[#0baaa5] ">
+        <section className="relative py-10 lg:py-15 px-4 overflow-hidden bg-gradient-to-r from-primary via-primary-500 via-primary-300 to-[#0baaa5] ">
           <div className="container mx-auto relative z-10">
             <div className="max-w-4xl mx-auto text-center space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-4">
                   <img className="w-6 h-6 text-white" src='/logo-hcmut.png' />
-                <span className="text-white font-medium text-2xl">HCMUT Tutor Support System</span>
+                <span className="text-white font-medium text-[20px]">HCMUT Tutor Support System</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              <h1 className="text-[34px] md:text-6xl font-bold text-white leading-tight">
                 Academic Excellence Through Collaborative Learning
               </h1>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">

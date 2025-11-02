@@ -12,10 +12,11 @@ interface ClassCardProps {
   classData: Class;
   showEnrollButton?: boolean;
   enrolled?: boolean;
+  link?: string;
 }
 
 
-const ClassCard = ({ classData, showEnrollButton = false, enrolled = false}: ClassCardProps) => {
+const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link = ""}: ClassCardProps) => {
   const { toast } = useToast();
   
   function handleEnroll(title: string, descrip: string): void{
@@ -29,7 +30,7 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false}: Cla
   const spotsLeft = classData.maxStudents - classData.enrolledStudents;
 
   return (
-    <Card className="group hover:shadow-card-hover transition-all duration-300 bg-white">
+    <Card className="group shadow-2xs hover:shadow-2xl transition-all duration-300 bg-white">
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
@@ -98,7 +99,7 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false}: Cla
       </CardContent>
 
       <CardFooter className="gap-2">
-        <Link to={`/student/classes`} className="flex-1">
+        <Link to={link === "" ?`/student/classes` : `/student/classes/${link}`} className="flex-1">
           <Button variant="outline" className="w-full">
             View Details
           </Button>

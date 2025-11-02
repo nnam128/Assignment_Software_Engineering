@@ -8,6 +8,7 @@ import RequestClass from './pages/Student/RequestClass';
 import { Toaster } from './component/ui/toaster';
 import { StudentClassDetail } from './pages/Student/ClassDetail';
 import StudentSchedule from './pages/Student/Schedule';
+import StudentMyClasses from './pages/Student/MyClass';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/student/request" element={<RequestClass />} />
           <Route path="/student/classes/:id" element={<StudentClassDetail />} />
           <Route path="/student/schedule" element={<StudentSchedule />} />
+          <Route path="/student/my-classes" element={<StudentMyClasses />} />
         </Routes>
       </BrowserRouter>
     </>

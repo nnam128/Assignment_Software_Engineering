@@ -74,7 +74,7 @@ export function StudentClassDetail(){
         </div>
 
         {/* info cards */}
-        <div className="grid md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card className="border-gradient bg-white">
             <CardHeader className="pb-2">
               <Users className="w-5 h-5 text-primary mb-2" />
