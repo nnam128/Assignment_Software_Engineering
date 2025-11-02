@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from '../../component/Header'
 import { Button } from '../../component/ui/button';
 import { Input } from '../../component/ui/input';
@@ -9,8 +9,20 @@ import { mockClassRequests } from '../../data/hardcodedData';
 import { Badge } from '../../component/ui/badge';
 import { Calendar, Users, Clock, Search, Filter } from 'lucide-react';
 import { useToast } from '../../component/UseToast';
+import { useNavigate } from 'react-router-dom';
+import { getCurrentUser, hasRole } from '../../Authentic/AuthProvider';
 
 function RequestClass(){
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
+    useEffect(() => {
+      if (!currentUser || !hasRole('student')) {
+        navigate('/login');
+      }
+    }, [currentUser, navigate]);
+  
+    if (!currentUser) return null;
+
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     subject: '',

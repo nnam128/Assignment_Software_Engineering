@@ -46,7 +46,7 @@ export function SessionNote({sessions} : SessionProps){
               <div className="flex justify-between px-2">
                 <FileIng src={src} />
                 <div className="flex flex-col justify-center item-center gap-2">
-                  <div className="flex justify-end items-end"><EllipsisVertical className="w-8 h-8 text-gradient-700" /></div>
+                  <div className="flex justify-end items-end"><EllipsisVertical className="w-6 h-6 text-gradient-700" /></div>
                   <FileSize>{file.size}</FileSize>
                 </div>
               </div>
@@ -77,7 +77,6 @@ export function SessionNote({sessions} : SessionProps){
           <CardContent className="space-y-4">
             {sessions.filter((session) => session.status !== 'cancelled').reverse().map((session) => {
               return (
-                <>
                   <div key={session.id} className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer mb-4">
                     <div className="flex items-start justify-between mb-2">
                       <div>
@@ -127,7 +126,6 @@ export function SessionNote({sessions} : SessionProps){
                       {session.resources && File(session)}
                     </div>
                   </div>
-                  </>
               );
             })}
           </CardContent>

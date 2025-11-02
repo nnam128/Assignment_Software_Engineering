@@ -86,9 +86,8 @@ function WeeklyCalendar({ sessions }: WeeklyCalendarProps){
                         const height = pos.duration * 50;
                         
                         return (
-                          <Link to={`/student/classes/${session.classId}`}>
+                          <Link key={session.id} to={`/student/classes/${session.classId}`}>
                             <div
-                              key={session.id}
                               className={`absolute left-1 right-1 border-l-4 rounded-r-lg p-2 ${getStatusColor(session.status)} overflow-visible shadow-sm hover:shadow-md transition-shadow cursor-pointer`}
                               style={{
                                 top: `${topOffset}px`,

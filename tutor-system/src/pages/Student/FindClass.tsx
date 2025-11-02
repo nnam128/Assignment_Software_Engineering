@@ -6,12 +6,23 @@ import { Badge } from '../../component/ui/badge';
 import { Card, CardContent } from '../../component/ui/card';
 import { mockClasses } from '../../data/hardcodedData';
 import { Search, Filter, Plus } from 'lucide-react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Label } from '../../component/ui/label';
+import { getCurrentUser, hasRole } from '../../Authentic/AuthProvider';
 
 
 export function StudentClasses(){
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
+    useEffect(() => {
+      if (!currentUser || !hasRole('student')) {
+        navigate('/login');
+      }
+    }, [currentUser, navigate]);
+  
+    if (!currentUser) return null;
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 

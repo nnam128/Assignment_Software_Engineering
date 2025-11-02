@@ -5,7 +5,7 @@ import { FileDate, FileFrame, FileGrid, FileIng, FileName, FileSize } from "./ui
 
 interface SessionProps{
   sessions: Session[],
-  classInfo : Class[];
+  classInfo : Class;
 }
 
 export function Resource({sessions, classInfo } : SessionProps){
@@ -33,7 +33,10 @@ export function Resource({sessions, classInfo } : SessionProps){
       src: src,
     };
   }
-  function File(resources : Resource[]){
+  interface ResourceProps{
+    resources: Resource[]
+  }
+  function File({resources} : ResourceProps){
     return(
       <>
         {resources.map((file, index)=>{
@@ -43,7 +46,7 @@ export function Resource({sessions, classInfo } : SessionProps){
               <div className="flex justify-between px-2">
                 <FileIng src={src} />
                 <div className="flex flex-col justify-center item-center gap-2">
-                  <div className="flex justify-end items-end"><EllipsisVertical className="w-8 h-8 text-gradient-700" /></div>
+                  <div className="flex justify-end items-end"><EllipsisVertical className="w-6 h-6 text-gradient-700" /></div>
                   <FileSize>{file.size}</FileSize>
                 </div>
               </div>
@@ -71,19 +74,16 @@ export function Resource({sessions, classInfo } : SessionProps){
           </CardHeader>
           <CardContent className="space-y-4">
             <FileGrid  className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-items-center">
-            {sessions.map((session) => {
-              return (
-                <>
-                  {session.resources && File(session.resources)}
-                </>
-              );
-            })}
-            {classInfo.map((cls) => {
-              return(
-                <>
-                {cls.resource && File(cls.resource)}
-                </>
-            )})}
+            {sessions.map((session) =>
+              session.resources ? (
+                <File resources={session.resources} key={session.id} />
+              ) : null
+            )}
+            {
+              classInfo.resource ? (
+                <File resources={classInfo.resource} key={classInfo.id} />
+              ) : null
+            }
             </FileGrid>
           </CardContent>
         </Card>
