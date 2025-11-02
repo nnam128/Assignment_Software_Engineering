@@ -143,8 +143,8 @@ export function StudentClassDetail(){
           </TabsContent>
 
           {/* session tab */}
-          <TabsContent value="sessions" className="">
-            <div className="max-h-100 overflow-scroll rounded-lg"><WeeklyCalendar sessions={sessions}/></div>
+          <TabsContent value="sessions" className="space-y-6">
+            <div className="max-h-100 overflow-scroll rounded-lg p-0 border border-gradient"><WeeklyCalendar sessions={sessions}/></div>
             <SessionNote sessions={sessions} />
           </TabsContent>
 
@@ -155,7 +155,7 @@ export function StudentClassDetail(){
 
         {/* Progress tab */}
           <TabsContent value="progress">
-            <Card className="border-gradient-50 bg-white">
+            <Card>
               <CardHeader>
                 <CardTitle>My Progress</CardTitle>
                 <CardDescription>Track your learning journey</CardDescription>

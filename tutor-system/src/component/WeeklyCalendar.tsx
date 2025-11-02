@@ -49,7 +49,7 @@ function WeeklyCalendar({ sessions }: WeeklyCalendarProps){
   };
 
   return (
-    <Card className="border-grid bg-white overflow-scroll">
+    <Card className="border-none bg-white overflow-scroll">
       <div className="overflow-x-auto">
         <div className="min-w-[800px]">
           {/* Day */}

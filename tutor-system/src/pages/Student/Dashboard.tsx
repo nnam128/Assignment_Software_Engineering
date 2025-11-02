@@ -11,8 +11,8 @@ import { Header } from '../../component/Header';
 export function StudentDashboard() {
   const enrolledClasses = mockClasses.slice(0, 3);
   const upcomingSessions = mockSessions.filter(s => s.status === 'scheduled').slice(0, 3);
+  
   const navigate = useNavigate();
-
   const currentUser = getCurrentUser();
   useEffect(() => {
     if (!currentUser || !hasRole('student')) {
