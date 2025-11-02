@@ -13,10 +13,11 @@ interface ClassCardProps {
   showEnrollButton?: boolean;
   enrolled?: boolean;
   link?: string;
+  tutor?: boolean;
 }
 
 
-const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link = ""}: ClassCardProps) => {
+const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link = "", tutor = false }: ClassCardProps) => {
   const { toast } = useToast();
   
   function handleEnroll(title: string, descrip: string): void{
@@ -26,7 +27,8 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
     });
   }
   
-  const isFull = classData.status === 'full';
+  const isFull = classData.maxStudents === classData.enrolledStudents;
+  const isActive = classData.status === 'active'
   const spotsLeft = classData.maxStudents - classData.enrolledStudents;
 
   return (
@@ -99,12 +101,12 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
       </CardContent>
 
       <CardFooter className="gap-2">
-        <Link to={link === "" ?`/student/classes` : `/student/classes/${link}`} className="flex-1">
+        <Link to={tutor? (link === "" ?`/tutor/classes` : `/tutor/classes/${link}`): (link === "" ?`/student/classes` : `/student/classes/${link}`)} className="flex-1">
           <Button variant="outline" className="w-full">
             View Details
           </Button>
         </Link>
-        {showEnrollButton && !enrolled && (
+        {showEnrollButton && !enrolled && !tutor && (
           <Button
             className={cn('flex-1', isFull && 'opacity-50 cursor-not-allowed')}
             onClick={() => {
@@ -124,9 +126,16 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
             {isFull ? 'Class Full' : 'Enroll'}
           </Button>
         )}
-        {enrolled && (
+        {showEnrollButton && enrolled && !tutor && (
           <Button className="flex-1" variant="active" onClick={() => {handleEnroll("You have left this class.", "Click again if you wish to rejoin.")}}>
             Enrolled
+          </Button>
+        )}
+        {showEnrollButton && tutor && (
+          <Button className={cn('flex-1', isActive && 'opacity-50 cursor-not-allowed')}
+          variant="default" onClick={() => {!isActive? handleEnroll("Are you sure you want to delete this class?", "Click again to confirm class deletion.") 
+          : handleEnroll("Can't delete", "Class is ative so you can't delete")}}>
+            Delete
           </Button>
         )}
       </CardFooter>

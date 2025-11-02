@@ -12,11 +12,11 @@ import { Label } from '../../component/ui/label';
 import { getCurrentUser, hasRole } from '../../Authentic/AuthProvider';
 
 
-export function StudentClasses(){
+export function TutorMyClasses(){
   const navigate = useNavigate();
   const currentUser = getCurrentUser();
     useEffect(() => {
-      if (!currentUser || !hasRole('student')) {
+      if (!currentUser || !hasRole('tutor')) {
         navigate('/');
       }
     }, [currentUser, navigate]);
@@ -28,7 +28,6 @@ export function StudentClasses(){
 
   const filters = [
     { value: 'all', label: 'All Classes' },
-    { value: 'available', label: 'Available' },
     { value: 'active', label: 'Active' },
     { value: 'inactive', label: 'Inactive' },
     { value: 'full', label: 'Full' },
@@ -38,27 +37,26 @@ export function StudentClasses(){
     const matchesSearch = cls.subject.toLowerCase().includes(searchQuery.toLowerCase()) || cls.code.toLowerCase().includes(searchQuery.toLowerCase()) 
                         || cls.tutorName.toLowerCase().includes(searchQuery.toLowerCase())|| cls.tutorId.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = selectedFilter === 'all' ||
-                          (selectedFilter === 'available' && (cls.status === 'active' || cls.status === 'inactive') && cls.enrolledStudents < cls.maxStudents) ||
                           (selectedFilter === 'full' && cls.enrolledStudents === cls.maxStudents) ||
                           cls.status === selectedFilter;
     return matchesSearch && matchesFilter;
   });
 
   return (
-    <Header role="student">
+    <Header role="tutor">
       <div className="space-y-6">
         {/* Welcome */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-black mb-2">Find Classes</h1>
+            <h1 className="text-3xl font-bold text-black mb-2">My Classes</h1>
             <p className="text-gradient-700">
-              Browse and enroll in available tutoring classes
+              Manage your teaching classes and students
             </p>
           </div>
-          <Link to={`/student/request`}>
+          <Link to={`/tutor/new-class`}>
             <Button className="gap-2">
               <Plus className="w-4 h-4" />
-              Request New Class
+              Open New Class
             </Button>
           </Link>
         </div>
@@ -66,7 +64,7 @@ export function StudentClasses(){
         {/* Search and Filters */}
         <Card className=" bg-white">
           <CardContent className="pt-6 space-y-4">
-            <Label htmlFor='class-search'>Search Class *</Label>
+            <Label htmlFor='class-search'>Filter Class *</Label>
             <div className="flex flex-col md:flex-row gap-3 mt-2">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gradient-700" />
@@ -114,6 +112,8 @@ export function StudentClasses(){
               classData={cls}
               showEnrollButton={true}
               enrolled = {cls.id === "C005" ? true : false}
+              tutor = {true}
+              link={cls.id}
             />
           ))}
         </div>
@@ -133,5 +133,5 @@ export function StudentClasses(){
   );
 };
 
-export default StudentClasses;
+export default TutorMyClasses;
 

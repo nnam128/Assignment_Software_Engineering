@@ -49,7 +49,7 @@ export function TuTorDashboard() {
                   </CardTitle>
                   <CardDescription>Your active teaching classes</CardDescription>
                 </div>
-                <Link to="/tutor/my-classes">
+                <Link to="/tutor/classes">
                   <Button variant="ghost" size="sm">View All</Button>
                 </Link>
               </div>

@@ -19,7 +19,7 @@ export interface Class {
   enrolledStudents: number;
   schedule: string;
   location: string;
-  status: 'active' | 'inactive' | 'full';
+  status: 'active' | 'inactive';
   description: string;
   startDate: string;
   endDate: string;
@@ -150,7 +150,7 @@ export const mockClasses: Class[] = [
     enrolledStudents: 30,
     schedule: 'Tuesday, Thursday 13:00-15:00',
     location: 'H2-305',
-    status: 'full',
+    status: 'active',
     description: 'Comprehensive coverage of relational databases, SQL, normalization, and transaction management.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
