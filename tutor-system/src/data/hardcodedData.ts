@@ -16,6 +16,7 @@ export interface Class {
   tutorId: string;
   tutorName: string;
   maxStudents: number;
+  minStudents: number;
   enrolledStudents: number;
   schedule: string;
   location: string;
@@ -124,6 +125,7 @@ export const mockClasses: Class[] = [
     tutorId: 'T001',
     tutorName: 'Dr. Trần Thị B',
     maxStudents: 25,
+    minStudents: 1,
     enrolledStudents: 18,
     schedule: 'Monday, Wednesday 15:00-17:00',
     location: 'H1-201',
@@ -147,6 +149,7 @@ export const mockClasses: Class[] = [
     tutorId: 'T002',
     tutorName: 'MSc. Lê Văn C',
     maxStudents: 30,
+    minStudents: 1,
     enrolledStudents: 30,
     schedule: 'Tuesday, Thursday 13:00-15:00',
     location: 'H2-305',
@@ -170,6 +173,7 @@ export const mockClasses: Class[] = [
     tutorId: 'T003',
     tutorName: 'Dr. Phạm Minh D',
     maxStudents: 20,
+    minStudents: 1,
     enrolledStudents: 15,
     schedule: 'Wednesday, Friday 09:00-12:00',
     location: 'H3-102',
@@ -193,6 +197,7 @@ export const mockClasses: Class[] = [
     tutorId: 'T004',
     tutorName: 'MSc. Hoàng Thị E',
     maxStudents: 25,
+    minStudents: 1,
     enrolledStudents: 22,
     schedule: 'Wednesday 15:00-17:00',
     location: 'Online - Zoom',
@@ -216,6 +221,7 @@ export const mockClasses: Class[] = [
     tutorId: 'T005',
     tutorName: 'Dr. Võ Văn F',
     maxStudents: 20,
+    minStudents: 1,
     enrolledStudents: 12,
     schedule: 'Saturday 08:00-11:00',
     location: 'H6-401',
@@ -239,6 +245,7 @@ export const mockClasses: Class[] = [
     tutorId: 'T006',
     tutorName: 'MSc. Đỗ Thị G',
     maxStudents: 30,
+    minStudents: 1,
     enrolledStudents: 8,
     schedule: 'Tuesday 17:00-19:00',
     location: 'H2-201',

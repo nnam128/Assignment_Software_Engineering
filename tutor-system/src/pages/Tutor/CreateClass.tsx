@@ -5,8 +5,7 @@ import { Input } from '../../component/ui/input';
 import { Textarea } from '../../component/ui/TextArea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../component/ui/card';
 import { Label } from '../../component/ui/label';
-import { Badge } from '../../component/ui/badge';
-import { Calendar, Users, Clock, Search, Filter, Save } from 'lucide-react';
+import { Save } from 'lucide-react';
 import { useToast } from '../../component/UseToast';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentUser, hasRole } from '../../Authentic/AuthProvider';
@@ -32,7 +31,7 @@ function CreateClass(){
     schedule: '',
     location: '',
     startDate: '',
-    duration: '',
+    minStudents: '',
     endDate: '',
   });
 
@@ -52,7 +51,7 @@ function CreateClass(){
       schedule: '',
       location: '',
       startDate: '',
-      duration: '',
+      minStudents: '',
       endDate: '',
     });
 
@@ -141,6 +140,19 @@ function CreateClass(){
                 <CardContent className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
+                      <Label htmlFor="minStudents">Minimum Students <span className="text-destructive">*</span></Label>
+                      <Input
+                        id="minStudents"
+                        name="minStudents"
+                        type="number"
+                        step="1"
+                        min="1"
+                        placeholder="e.g., 1"
+                        value={formData.minStudents}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="space-y-2">
                       <Label htmlFor="maxStudents">
                         Maximum Students <span className="text-destructive">*</span>
                       </Label>
@@ -155,24 +167,11 @@ function CreateClass(){
                         required
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="duration">Session Duration (hours)</Label>
-                      <Input
-                        id="duration"
-                        name="duration"
-                        type="number"
-                        step="0.5"
-                        min="0.5"
-                        placeholder="e.g., 1.5"
-                        value={formData.duration}
-                        onChange={handleChange}
-                      />
-                    </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="schedule">Schedule</Label>
+                      <Label htmlFor="schedule">Schedule <span className="text-destructive">*</span></Label>
                       <Input
                         id="schedule"
                         name="schedule"
@@ -182,11 +181,11 @@ function CreateClass(){
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="location">Location</Label>
+                      <Label htmlFor="location">Location <span className="text-destructive">*</span></Label>
                       <Input
                         id="location"
                         name="location"
-                        placeholder="e.g., Room 201"
+                        placeholder="e.g., Room 201, Online - Zoom"
                         value={formData.location}
                         onChange={handleChange}
                       />
@@ -195,7 +194,7 @@ function CreateClass(){
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="startDate">Start Date</Label>
+                      <Label htmlFor="startDate">Start Date <span className="text-destructive">*</span></Label>
                       <Input
                         id="startDate"
                         name="startDate"
@@ -205,7 +204,7 @@ function CreateClass(){
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="endDate">End Date</Label>
+                      <Label htmlFor="endDate">End Date <span className="text-destructive">*</span></Label>
                       <Input
                         id="endDate"
                         name="endDate"

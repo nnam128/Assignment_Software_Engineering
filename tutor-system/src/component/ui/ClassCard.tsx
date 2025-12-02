@@ -131,13 +131,6 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
             Enrolled
           </Button>
         )}
-        {showEnrollButton && tutor && (
-          <Button className={cn('flex-1', isActive && 'opacity-50 cursor-not-allowed')}
-          variant="default" onClick={() => {!isActive? handleEnroll("Are you sure you want to delete this class?", "Click again to confirm class deletion.") 
-          : handleEnroll("Can't delete", "Class is ative so you can't delete")}}>
-            Delete
-          </Button>
-        )}
       </CardFooter>
     </Card>
   );
