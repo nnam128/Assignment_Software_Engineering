@@ -14,13 +14,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../..
 import { Tabs } from "../../component/ui/tab";
 import { TabsContent, TabsList, TabsTrigger } from "../../component/ui/tab";
 import { FeedbackForm, type FeedbackFormData } from "../../component/Feedback";
-import { useToast } from "../../component/UseToast";
 
-export function StudentClassDetail(){
+export function TutorClassDetail(){
   const navigate = useNavigate();
   const currentUser = getCurrentUser();
     useEffect(() => {
-      if (!currentUser || !hasRole('student')) {
+      if (!currentUser || !hasRole('tutor')) {
         navigate('/');
       }
     }, [currentUser, navigate]);
@@ -34,7 +33,7 @@ export function StudentClassDetail(){
   
   if (!classInfo) {
     return (
-      <Header role="student">
+      <Header role="tutor">
         <div className="text-center py-12">
           <p className="text-muted-foreground">Class not found</p>
         </div>
@@ -42,31 +41,17 @@ export function StudentClassDetail(){
     );
   }
 
-  const { toast } = useToast();
   const handleFeedbackSubmit = async (data: FeedbackFormData) => {
-    const allRated = data.allRated;
-    if (!allRated) {
-      toast({
-        title: "Feedback Incomplete",
-        description: "Please rate all criteria before submitting.",
-        variant: "destructive",
-      });
-      return;
-    }
-    toast({
-      title: "Feedback Submitted",
-      description: "Your ratings and comments have been recorded successfully.",
-    });
     console.log("Ratings:", data.ratings);
     console.log("Description:", data.description);
   };
 
     return(
       <>
-      <Header role='student'>
+      <Header role='tutor'>
         <div className="space-y-6">
         {/* Back Button */}
-        <Link to="/student/my-classes">
+        <Link to="/tutor/classes">
           <Button variant="ghost" className="gap-2 mt-[-10px]">
             <ArrowLeft className="w-4 h-4" />
             Back to Classes
@@ -195,20 +180,14 @@ export function StudentClassDetail(){
                   ))}
                 </div>
               </CardContent>
-              <div className="border border-gradient mx-3"></div>
-              <FeedbackForm
-              criteria = {[
-                  { id: "clarity", label: "Clarity of the lecture" },
-                  { id: "engagement", label: "Level of engagement" },
-                  { id: "class_environment", label: "Class environment" },
-                  { id: "learning_platform", label: "E-learning platform" },
-                  { id: "materials_quality", label: "Quality of learning materials" },
-                  { id: "assignment_fairness", label: "Fairness of assignments and grading" }
-              ]}
-              onSubmit={handleFeedbackSubmit}
-              subtitle="Feedback your class"
-              />
             </Card>
+            <FeedbackForm
+                  criteria={[
+                    { id: "clarity", label: "Độ rõ ràng của bài giảng" },
+                    { id: "engagement", label: "Mức độ tương tác" },
+                  ]}
+                  onSubmit={handleFeedbackSubmit}
+                />
           </TabsContent>
         </Tabs>
       </div>
