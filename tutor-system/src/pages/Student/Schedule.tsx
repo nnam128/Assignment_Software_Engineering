@@ -77,7 +77,7 @@ export function StudentSchedule(){
               All your sessions across enrolled classes
             </p>
           </div>
-          <div className='rounded-lg p-0 border border-gradient'><WeeklyCalendar sessions={allSessions} /></div>
+          <div className='rounded-lg p-0 border border-gradient bg-white'><WeeklyCalendar sessions={allSessions} role='student' inclass={false} cancleList={allSessions}/></div>
         </div>
 
         {/* Legend */}

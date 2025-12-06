@@ -229,7 +229,7 @@ export function TutorClassDetail(){
 
           {/* session tab */}
           <TabsContent value="sessions" className="space-y-6">
-            <div className="max-h-100 overflow-scroll rounded-lg p-0 border border-gradient"><WeeklyCalendar sessions={sessions} role="tutor" inclass={true}/></div>
+            <div className="max-h-100 md:max-h-130 overflow-scroll rounded-lg p-0 border border-gradient bg-white"><WeeklyCalendar sessions={sessions} role="tutor" inclass={true} cancleList={sessions}/></div>
             <SessionNote sessions={sessions} />
           </TabsContent>
 
