@@ -9,6 +9,12 @@ export interface User {
   studentId?: string;
 }
 
+export interface Student {
+  id: string;
+  name: string;
+  email?: string;
+}
+
 export interface Class {
   id: string;
   subject: string;
@@ -26,6 +32,7 @@ export interface Class {
   endDate: string;
   tags: string[];
   resource?: Resource[]
+  requestedStudents?: Student[];
 }
 
 export interface Session {
@@ -130,7 +137,8 @@ export const mockClasses: Class[] = [
     schedule: 'Monday, Wednesday 15:00-17:00',
     location: 'H1-201',
     status: 'active',
-    description: 'Advanced study on data structures including trees, graphs, and algorithm optimization techniques.',
+    description:
+      'Advanced study on data structures including trees, graphs, and algorithm optimization techniques.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Programming', 'Algorithms', 'Core'],
@@ -140,6 +148,14 @@ export const mockClasses: Class[] = [
       { name: 'files/Graph_Theory_Notes.docx', size: '1.5 MB', date: '2025-02-10' },
       { name: 'files/Tree_Traversal_Lab.csv', size: '500 KB', date: '2025-02-15' },
       { name: 'files/DSA_Assignment1.pdf', size: '2.5 MB', date: '2025-02-20' }
+    ],
+    requestedStudents: [
+      { id: '2345681', name: 'Phạm Thị D', email: 'd.pt@hcmut.edu.vn' },
+      { id: '2345683', name: 'Đặng Thị F', email: 'f.dt@hcmut.edu.vn' },
+      { id: '2345679', name: 'Trần Thị B', email: 'b.tt@hcmut.edu.vn' },
+      { id: '2345682', name: 'Võ Văn E', email: 'e.vv@hcmut.edu.vn' },
+      { id: '2345680', name: 'Lê Văn C', email: 'c.lv@hcmut.edu.vn' },
+      { id: '2345678', name: 'Nguyễn Văn A', email: 'a.nv@hcmut.edu.vn' }
     ]
   },
   {
@@ -154,7 +170,8 @@ export const mockClasses: Class[] = [
     schedule: 'Tuesday, Thursday 13:00-15:00',
     location: 'H2-305',
     status: 'active',
-    description: 'Comprehensive coverage of relational databases, SQL, normalization, and transaction management.',
+    description:
+      'Comprehensive coverage of relational databases, SQL, normalization, and transaction management.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Database', 'SQL', 'Core'],
@@ -178,7 +195,8 @@ export const mockClasses: Class[] = [
     schedule: 'Wednesday, Friday 09:00-12:00',
     location: 'H3-102',
     status: 'active',
-    description: 'Software development lifecycle, design patterns, Agile methodologies, and project management.',
+    description:
+      'Software development lifecycle, design patterns, Agile methodologies, and project management.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['SDLC', 'Design Patterns', 'Project'],
@@ -188,6 +206,12 @@ export const mockClasses: Class[] = [
       { name: 'files/Design_Patterns_Summary.pdf', size: '2.5 MB', date: '2025-02-13' },
       { name: 'files/Agile_Methods.docx', size: '1.8 MB', date: '2025-02-16' },
       { name: 'files/Project_Management_Tools.pdf', size: '2.2 MB', date: '2025-02-22' }
+    ],
+    requestedStudents: [
+      { id: '2345690', name: 'Trần Thị M', email: 'm.tt@hcmut.edu.vn' },
+      { id: '2345692', name: 'Phạm Thị O', email: 'o.pt@hcmut.edu.vn' },
+      { id: '2345689', name: 'Nguyễn Văn L', email: 'l.nv@hcmut.edu.vn' },
+      { id: '2345691', name: 'Lê Văn N', email: 'n.lv@hcmut.edu.vn' }
     ]
   },
   {
@@ -202,7 +226,8 @@ export const mockClasses: Class[] = [
     schedule: 'Wednesday 15:00-17:00',
     location: 'Online - Zoom',
     status: 'inactive',
-    description: 'Network protocols, TCP/IP, routing, network security, and practical lab sessions.',
+    description:
+      'Network protocols, TCP/IP, routing, network security, and practical lab sessions.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Networks', 'Protocols', 'Security'],
@@ -226,7 +251,8 @@ export const mockClasses: Class[] = [
     schedule: 'Saturday 08:00-11:00',
     location: 'H6-401',
     status: 'active',
-    description: 'Introduction to ML algorithms, neural networks, deep learning, and practical implementations.',
+    description:
+      'Introduction to ML algorithms, neural networks, deep learning, and practical implementations.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['AI', 'ML', 'Advanced'],
@@ -236,6 +262,13 @@ export const mockClasses: Class[] = [
       { name: 'files/Deep_Learning_Tutorial.pdf', size: '3 MB', date: '2025-02-11' },
       { name: 'files/ML_Lab_Exercises.csv', size: '800 KB', date: '2025-02-17' },
       { name: 'files/ML_Project_Guide.pdf', size: '2.4 MB', date: '2025-02-21' }
+    ],
+    requestedStudents: [
+      { id: '2345697', name: 'Vũ Văn T', email: 't.vv@hcmut.edu.vn' },
+      { id: '2345694', name: 'Nguyễn Thị Q', email: 'q.nt@hcmut.edu.vn' },
+      { id: '2345693', name: 'Đặng Văn P', email: 'p.dv@hcmut.edu.vn' },
+      { id: '2345696', name: 'Phạm Thị S', email: 's.pt@hcmut.edu.vn' },
+      { id: '2345695', name: 'Lê Văn R', email: 'r.lv@hcmut.edu.vn' }
     ]
   },
   {
@@ -250,7 +283,8 @@ export const mockClasses: Class[] = [
     schedule: 'Tuesday 17:00-19:00',
     location: 'H2-201',
     status: 'inactive',
-    description: 'Full-stack web development with React, Node.js, databases, and deployment strategies.',
+    description:
+      'Full-stack web development with React, Node.js, databases, and deployment strategies.',
     startDate: '2025-02-01',
     endDate: '2025-05-31',
     tags: ['Web', 'Frontend', 'Backend'],
@@ -260,6 +294,13 @@ export const mockClasses: Class[] = [
       { name: 'files/NodeJS_Notes.docx', size: '2.2 MB', date: '2025-02-12' },
       { name: 'files/Database_Integration.pdf', size: '2.7 MB', date: '2025-02-17' },
       { name: 'files/Deployment_Tutorial.pdf', size: '1.9 MB', date: '2025-02-22' }
+    ],
+    requestedStudents: [
+      { id: '2345686', name: 'Lê Thị I', email: 'i.lt@hcmut.edu.vn' },
+      { id: '2345684', name: 'Nguyễn Thị G', email: 'g.nt@hcmut.edu.vn' },
+      { id: '2345688', name: 'Vũ Thị K', email: 'k.vt@hcmut.edu.vn' },
+      { id: '2345685', name: 'Phạm Văn H', email: 'h.pv@hcmut.edu.vn' },
+      { id: '2345687', name: 'Trần Văn J', email: 'j.tv@hcmut.edu.vn' }
     ]
   }
 ];

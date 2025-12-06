@@ -36,7 +36,7 @@ export function StudentClassDetail(){
     return (
       <Header role="student">
         <div className="text-center py-12">
-          <p className="text-muted-foreground">Class not found</p>
+          <p className="text-gradient-600">Class not found</p>
         </div>
       </Header>
     );
@@ -141,19 +141,19 @@ export function StudentClassDetail(){
         <Tabs defaultValue="sessions" className="space-y-4">
           <TabsList className="grid w-full md:w-auto md:inline-grid grid-cols-4 gap-2">
             <TabsTrigger value="sessions" className="gap-2">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4 hidden md:inline-flex" />
               Sessions
             </TabsTrigger>
             <TabsTrigger value="community" className="gap-2">
-              <MessageSquare className="w-4 h-4" />
+              <MessageSquare className="w-4 h-4 hidden md:inline-flex" />
               Community
             </TabsTrigger>
             <TabsTrigger value="resources" className="gap-2">
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 hidden md:inline-flex" />
               Resources
             </TabsTrigger>
             <TabsTrigger value="progress" className="gap-2">
-              <TrendingUp className="w-4 h-4" />
+              <TrendingUp className="w-4 h-4 hidden md:inline-flex" />
               Progress
             </TabsTrigger>
           </TabsList>
@@ -165,7 +165,7 @@ export function StudentClassDetail(){
 
           {/* session tab */}
           <TabsContent value="sessions" className="space-y-6">
-            <div className="max-h-100 overflow-scroll rounded-lg p-0 border border-gradient"><WeeklyCalendar sessions={sessions}/></div>
+            <div className="max-h-100 overflow-scroll rounded-lg p-0 border border-gradient"><WeeklyCalendar sessions={sessions} role="student"/></div>
             <SessionNote sessions={sessions} />
           </TabsContent>
 
@@ -189,7 +189,7 @@ export function StudentClassDetail(){
                     { label: 'Participation', value: 'High', color: 'text-secondary' },
                   ].map((stat, idx) => (
                     <div key={idx} className="p-4 rounded-lg bg-gradient-50 border border-gradient-50">
-                      <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
+                      <p className="text-sm text-gradient-600 mb-1">{stat.label}</p>
                       <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
                     </div>
                   ))}

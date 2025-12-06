@@ -8,7 +8,7 @@ import { getCurrentUser, hasRole } from "../../Authentic/AuthProvider";
 import { useEffect, useState } from "react";
 import { Header } from "../../component/Header";
 import { Button } from "../../component/ui/button";
-import { ArrowLeft, Calendar, FileText, MapPin, MessageSquare, PenLine, Save, TrendingUp, Users } from "lucide-react";
+import { ArrowLeft, BadgeX, Calendar, FileText, ListTodo, MapPin, MessageSquare, PenLine, Save, TrendingUp, Users } from "lucide-react";
 import { Badge } from "../../component/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../component/ui/card";
 import { Tabs } from "../../component/ui/tab";
@@ -18,6 +18,7 @@ import { useToast } from "../../component/UseToast";
 import { Label } from '../../component/ui/label';
 import { Input } from "../../component/ui/input";
 import { Textarea } from "../../component/ui/TextArea";
+import { StudentTable } from "../../component/Monitor";
 
 
 export function TutorClassDetail(){
@@ -102,6 +103,12 @@ export function TutorClassDetail(){
   setFormData(prev => ({ ...prev, [name]: value }));
 };
 
+  function handleEnroll(title: string, descrip: string): void{
+      toast({
+        title: title,
+        description: descrip,
+      });
+    }
     return(
       <>
       <Header role='tutor'>
@@ -114,11 +121,20 @@ export function TutorClassDetail(){
               Back to Classes
             </Button>
           </Link>
-
+          <div>
+            {classInfo.status === 'inactive' &&  
+            <>
+              <Button variant="ghost" className="gap-2 -mt-2.5"  onClick={() => {handleEnroll("Are you sure you want to delete this class?", "Click again to confirm class deletion.")}} >
+                <BadgeX className="w-4 h-4" />
+                Delete Class
+              </Button>
+            </>
+            }
             <Button variant="ghost" className="gap-2 mt-[-10px]" onClick={editDetail}>
               <PenLine className="w-4 h-4" />
               Edit class’s details
             </Button>
+          </div>
         </div>
 
         {/* Header */}
@@ -189,31 +205,31 @@ export function TutorClassDetail(){
         <Tabs defaultValue="sessions" className="space-y-4">
           <TabsList className="grid w-full md:w-auto md:inline-grid grid-cols-4 gap-2">
             <TabsTrigger value="sessions" className="gap-2">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4 hidden md:inline-flex" />
               Sessions
             </TabsTrigger>
             <TabsTrigger value="community" className="gap-2">
-              <MessageSquare className="w-4 h-4" />
+              <MessageSquare className="w-4 h-4 hidden md:inline-flex" />
               Community
             </TabsTrigger>
             <TabsTrigger value="resources" className="gap-2">
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 hidden md:inline-flex" />
               Resources
             </TabsTrigger>
-            <TabsTrigger value="progress" className="gap-2">
-              <TrendingUp className="w-4 h-4" />
-              Progress
+            <TabsTrigger value="monitoring" className="gap-2">
+              <ListTodo className="w-4 h-4 hidden md:inline-flex" />
+              Monitoring
             </TabsTrigger>
           </TabsList>
         
         {/* Community Tab */}
           <TabsContent value="community" className="">
-            <Community classPosts = {classPosts} id = {id} />
+            <Community classPosts = {classPosts} id = {id}/>
           </TabsContent>
 
           {/* session tab */}
           <TabsContent value="sessions" className="space-y-6">
-            <div className="max-h-100 overflow-scroll rounded-lg p-0 border border-gradient"><WeeklyCalendar sessions={sessions}/></div>
+            <div className="max-h-100 overflow-scroll rounded-lg p-0 border border-gradient"><WeeklyCalendar sessions={sessions} role="tutor" inclass={true}/></div>
             <SessionNote sessions={sessions} />
           </TabsContent>
 
@@ -222,8 +238,8 @@ export function TutorClassDetail(){
             <Resource sessions={sessions} classInfo={classInfo} />
           </TabsContent>
 
-        {/* Progress tab */}
-          <TabsContent value="progress">
+        {/* Monitoring tab */}
+          <TabsContent value="monitoring">
             <Card>
               <CardHeader>
                 <CardTitle>My Progress</CardTitle>
@@ -237,21 +253,27 @@ export function TutorClassDetail(){
                     { label: 'Participation', value: 'High', color: 'text-secondary' },
                   ].map((stat, idx) => (
                     <div key={idx} className="p-4 rounded-lg bg-gradient-50 border border-gradient-50">
-                      <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
+                      <p className="text-sm text-gradient-600 mb-1">{stat.label}</p>
                       <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
                     </div>
                   ))}
                 </div>
               </CardContent>
+              {classInfo.status === 'inactive' &&
+              <>
+                <div className="border border-gradient mx-3"></div>
+                <CardHeader>
+                  <CardTitle>Request Student</CardTitle>
+                  <CardDescription>Allow students to join your class</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <StudentTable key={classInfo.id} requestedStudents={classInfo.requestedStudents}/>
+                </CardContent>
+              </>}
             </Card>
-            <FeedbackForm
-                  criteria={[
-                    { id: "clarity", label: "Độ rõ ràng của bài giảng" },
-                    { id: "engagement", label: "Mức độ tương tác" },
-                  ]}
-                  onSubmit={handleFeedbackSubmit}
-                />
+
           </TabsContent>
+          
         </Tabs>
       </div>
       </Header>

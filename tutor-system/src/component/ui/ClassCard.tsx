@@ -28,7 +28,6 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
   }
   
   const isFull = classData.maxStudents === classData.enrolledStudents;
-  const isActive = classData.status === 'active'
   const spotsLeft = classData.maxStudents - classData.enrolledStudents;
 
   return (
