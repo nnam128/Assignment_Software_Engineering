@@ -251,7 +251,7 @@ export function ViewClassReport() {
 
             <div className="rounded-md border border-gradient-600 bg-white overflow-x-scroll shadow-sm">
                 <table className="w-full text-sm text-left">
-                    <thead className="bg-gray-50 text-gray-700 uppercase font-semibold border-b">
+                    <thead className="bg-gray-50 text-gray-700 uppercase font-semibold border-b border-gradient-600">
                         <tr>
                             <th className="px-6 py-4">Class Name</th>
                             <th className="px-6 py-4">Status</th>
