@@ -13,11 +13,11 @@ interface ClassCardProps {
   showEnrollButton?: boolean;
   enrolled?: boolean;
   link?: string;
-  tutor?: boolean;
+  tutor?: boolean | undefined;
 }
 
 
-const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link = "", tutor = false }: ClassCardProps) => {
+const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link = "", tutor }: ClassCardProps) => {
   const { toast } = useToast();
   
   function handleEnroll(title: string, descrip: string): void{
@@ -100,12 +100,14 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
       </CardContent>
 
       <CardFooter className="gap-2">
-        <Link to={tutor? (link === "" ?`/tutor/classes` : `/tutor/classes/${link}`): (link === "" ?`/student/classes` : `/student/classes/${link}`)} className="flex-1">
+        <Link to={tutor === undefined
+      ? '/admin/classes'
+      :tutor? (link === "" ?`/tutor/classes` : `/tutor/classes/${link}`): (link === "" ?`/student/classes` : `/student/classes/${link}`)} className="flex-1">
           <Button variant="outline" className="w-full">
             View Details
           </Button>
         </Link>
-        {showEnrollButton && !enrolled && !tutor && (
+        {showEnrollButton && !enrolled && !tutor && tutor !== undefined && (
           <Button
             className={cn('flex-1', isFull && 'opacity-50 cursor-not-allowed')}
             onClick={() => {
@@ -125,7 +127,7 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
             {isFull ? 'Class Full' : 'Enroll'}
           </Button>
         )}
-        {showEnrollButton && enrolled && !tutor && (
+        {showEnrollButton && enrolled && !tutor && tutor !== undefined && (
           <Button className="flex-1" variant="active" onClick={() => {handleEnroll("You have left this class.", "Click again if you wish to rejoin.")}}>
             Enrolled
           </Button>

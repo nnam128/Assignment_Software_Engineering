@@ -82,7 +82,7 @@ export interface ClassRequest {
   requestedBy: string[];
   studentCount: number;
   preferredSchedule: string;
-  status: 'pending' | 'approved';
+  status: 'pending' | 'approved' | 'rejected';
   description: string;
   createdDate: string;
 }
@@ -103,6 +103,75 @@ export interface ClassPerformanceStats {
   studentPassRate: number;
   totalSessionsCompleted: number;
 }
+
+export interface ClassReport {
+  id: string;
+  className: string;
+  code: string;
+  tutorName: string;
+  totalStudents: number;
+  attendanceRate: number;
+  syllabusProgress: number;
+  rescheduleCount: number;
+  avgRating: number;
+  lastFeedback: string;
+  status: 'On Track' | 'Behind' | 'Risk';
+}
+
+export const mockReports: ClassReport[] = [
+  {
+    id: 'C01',
+    className: 'Advanced React Patterns',
+    code: 'CC02',
+    tutorName: 'Dr. Trần Thị B',
+    totalStudents: 45,
+    attendanceRate: 92,
+    syllabusProgress: 85,
+    rescheduleCount: 1,
+    avgRating: 4.8,
+    lastFeedback: "Great explanation of Hooks!",
+    status: 'On Track'
+  },
+  {
+    id: 'C02',
+    className: 'Introduction to Python',
+    code: 'CC01',
+    tutorName: 'Dr. Trần Thị B',
+    totalStudents: 30,
+    attendanceRate: 65,
+    syllabusProgress: 40,
+    rescheduleCount: 5,
+    avgRating: 3.2,
+    lastFeedback: "Teacher is often late.",
+    status: 'Risk'
+  },
+  {
+    id: 'C03',
+    className: 'Data Structures',
+    code: 'CC03',
+    tutorName: 'Prof. Trần Thị C',
+    totalStudents: 50,
+    attendanceRate: 88,
+    syllabusProgress: 90,
+    rescheduleCount: 0,
+    avgRating: 4.5,
+    lastFeedback: "Very difficult but useful.",
+    status: 'On Track'
+  },
+  {
+    id: 'C04',
+    className: 'UI/UX Design Principles',
+    code: 'CC04',
+    tutorName: 'Dr. Trần Thị B',
+    totalStudents: 25,
+    attendanceRate: 78,
+    syllabusProgress: 60,
+    rescheduleCount: 4,
+    avgRating: 3.8,
+    lastFeedback: "Class cancelled too many times.",
+    status: 'Behind'
+  }
+];
 
 
 // Mock Users

@@ -15,6 +15,10 @@ import CreateClass from './pages/Tutor/CreateClass';
 import TutorSchedule from './pages/Tutor/Schedule';
 import { TutorClassDetail } from './pages/Tutor/ClassDetail';
 import ViewClassReport from './pages/Tutor/ClassReport';
+import AdminDashboard from './pages/Admin/Dashboard';
+import AdminRequests from './pages/Admin/Request';
+import AdminClassReports from './pages/Admin/ClassReport';
+import AdminClasses from './pages/Admin/Classes';
 
 function App() {
   return (
@@ -36,6 +40,10 @@ function App() {
           <Route path="/tutor/schedule" element={<TutorSchedule />} />
           <Route path="/tutor/classes/:id" element={<TutorClassDetail />} />
           <Route path="/tutor/reports" element={<ViewClassReport />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/requests" element={<AdminRequests />} />
+          <Route path="/admin/reports" element={<AdminClassReports />} />
+          <Route path="/admin/classes" element={<AdminClasses />} />
         </Routes>
       </BrowserRouter>
     </>
