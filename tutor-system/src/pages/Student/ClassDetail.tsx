@@ -166,12 +166,12 @@ export function StudentClassDetail(){
           {/* session tab */}
           <TabsContent value="sessions" className="space-y-6">
             <div className="max-h-100 md:max-h-130 overflow-scroll rounded-lg p-0 border border-gradient bg-white"><WeeklyCalendar sessions={sessions} role="student" inclass={true} cancleList={sessions}/></div>
-            <SessionNote sessions={sessions} />
+            <SessionNote sessions={sessions} role="student"/>
           </TabsContent>
 
           {/* Resource Tab */}
           <TabsContent value="resources" className="">
-            <Resource sessions={sessions} classInfo={classInfo} />
+            <Resource sessions={sessions} classInfo={classInfo} role="student" />
           </TabsContent>
 
         {/* Progress tab */}

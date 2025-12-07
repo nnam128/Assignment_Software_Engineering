@@ -12,7 +12,7 @@ export interface User {
 export interface Student {
   id: string;
   name: string;
-  email?: string;
+  email: string;
 }
 
 export interface Class {
@@ -88,9 +88,20 @@ export interface ClassRequest {
 }
 
 export interface Resource {
+  id?: string;
   name: string;
   size: string;
   date: string;
+  url?: string;
+}
+
+export interface ClassPerformanceStats {
+  classId: string;
+  attendanceRate: number;
+  participationLevel: number;
+  avgFeedback: number;
+  studentPassRate: number;
+  totalSessionsCompleted: number;
 }
 
 
@@ -775,4 +786,30 @@ export const availableSessions: Session[] = [
   },
 ];
 
+export const mockClassReports: ClassPerformanceStats[] = [
+  {
+    classId: "C001",
+    attendanceRate: 85,
+    participationLevel: 72,
+    avgFeedback: 8.4,
+    studentPassRate: 90,
+    totalSessionsCompleted: 10
+  },
+  {
+    classId: "C002",
+    attendanceRate: 70,
+    participationLevel: 65,
+    avgFeedback: 7.8,
+    studentPassRate: 82,
+    totalSessionsCompleted: 8
+  },
+  {
+    classId: "C003",
+    attendanceRate: 92,
+    participationLevel: 88,
+    avgFeedback: 9.1,
+    studentPassRate: 95,
+    totalSessionsCompleted: 12
+  }
+];
 

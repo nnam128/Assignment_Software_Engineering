@@ -29,6 +29,7 @@ const toastVariants = cva(
       variant: {
         default: "border border-gradient bg-white text-black",
         destructive: "group border border-destructive bg-destructive text-white",
+        warning: "group border border-accent bg-accent text-black",
       },
     },
     defaultVariants: {

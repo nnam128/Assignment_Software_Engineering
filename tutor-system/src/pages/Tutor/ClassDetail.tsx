@@ -19,6 +19,7 @@ import { Label } from '../../component/ui/label';
 import { Input } from "../../component/ui/input";
 import { Textarea } from "../../component/ui/TextArea";
 import { StudentTable } from "../../component/Monitor";
+import { TrackStu } from "../../component/TrackStu";
 
 
 export function TutorClassDetail(){
@@ -230,12 +231,12 @@ export function TutorClassDetail(){
           {/* session tab */}
           <TabsContent value="sessions" className="space-y-6">
             <div className="max-h-100 md:max-h-130 overflow-scroll rounded-lg p-0 border border-gradient bg-white"><WeeklyCalendar sessions={sessions} role="tutor" inclass={true} cancleList={sessions}/></div>
-            <SessionNote sessions={sessions} />
+            <SessionNote sessions={sessions} role="tutor"/>
           </TabsContent>
 
           {/* Resource Tab */}
           <TabsContent value="resources" className="">
-            <Resource sessions={sessions} classInfo={classInfo} />
+            <Resource sessions={sessions} classInfo={classInfo} role="tutor"/>
           </TabsContent>
 
         {/* Monitoring tab */}
@@ -268,6 +269,17 @@ export function TutorClassDetail(){
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <StudentTable key={classInfo.id} requestedStudents={classInfo.requestedStudents}/>
+                </CardContent>
+              </>}
+              {classInfo.status === 'active' &&
+              <>
+                <div className="border border-gradient mx-3"></div>
+                <CardHeader>
+                  <CardTitle>Request Student</CardTitle>
+                  <CardDescription>Allow students to join your class</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <TrackStu students={classInfo.requestedStudents}/>
                 </CardContent>
               </>}
             </Card>

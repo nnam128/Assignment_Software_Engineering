@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Calendar, Home, MessageSquare, Search, GraduationCap, BarChart3, LogIn, LogOut } from 'lucide-react';
+import { BookOpen, Calendar, Home, MessageSquare, Search, BarChart3, LogIn, LogOut } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { getCurrentUser, logout } from '../Authentic/AuthProvider';
 
@@ -49,7 +49,7 @@ export function Header({ children, role }: LayoutProps){
     { path: '/tutor/dashboard', icon: Home, label: 'Dashboard' },
     { path: '/tutor/classes', icon: BookOpen, label: 'My Classes' },
     { path: '/tutor/schedule', icon: Calendar, label: 'Schedule' },
-    { path: '/tutor/students', icon: GraduationCap, label: 'Students' },
+    { path: '/tutor/reports', icon: BarChart3, label: 'Reports' },
   ];
 
   const adminNav = [

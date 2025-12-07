@@ -150,10 +150,10 @@ export function TuTorDashboard() {
                   <span>View Schedule</span>
                 </Button>
               </Link >
-              <Link to="/tutor/track-student">
+              <Link to="/tutor/reports">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
                   <Users className="w-4 h-4" />
-                  <span>Track Student</span>
+                  <span>Class Report</span>
                 </Button>
               </Link>
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
