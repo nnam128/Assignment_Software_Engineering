@@ -114,6 +114,7 @@ export function StudentClasses(){
               classData={cls}
               showEnrollButton={true}
               enrolled = {cls.id === "C005" ? true : false}
+              tutor={false}
             />
           ))}
         </div>

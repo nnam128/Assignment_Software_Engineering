@@ -107,7 +107,7 @@ const ClassCard = ({ classData, showEnrollButton = false, enrolled = false, link
             View Details
           </Button>
         </Link>
-        {showEnrollButton && !enrolled && !tutor && tutor !== undefined && (
+        {showEnrollButton && !enrolled && !tutor && tutor != undefined && (
           <Button
             className={cn('flex-1', isFull && 'opacity-50 cursor-not-allowed')}
             onClick={() => {
