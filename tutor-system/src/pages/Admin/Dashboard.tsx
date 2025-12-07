@@ -7,7 +7,6 @@ import {
   BookOpen, 
   CheckCircle, 
   MessageSquare, 
-  ShieldCheck, 
   Users, 
   XCircle,
   AlertCircle,
@@ -62,16 +61,13 @@ export function AdminDashboard() {
       <div className="space-y-8">
         
         {/* Welcome & Overview */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-black mb-2 flex items-center gap-2">
-              <ShieldCheck className="w-8 h-8 text-primary" />
+        <div>
+            <h1 className="text-3xl font-bold text-black mb-2">
               Admin Dashboard
             </h1>
             <p className="text-gradient-700">
               System overview, request management, and reporting
             </p>
-          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
@@ -93,21 +89,21 @@ export function AdminDashboard() {
             <CardContent className="space-y-4">
               {pendingRequests.length > 0 ? (
                 pendingRequests.map((req) => (
-                  <div key={req.id} className="p-4 rounded-lg border border-gray-200 bg-white hover:shadow-md transition-all">
+                  <div key={req.id} className="p-4 rounded-lg border border-gray-200 bg-white hover:shadow-md transition-all cursor-pointer">
                     
                     {/* Header: Subject + Status */}
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <h4 className="font-semibold text-black text-lg">{req.subject}</h4>
-                        <p className="text-xs text-gray-400 font-mono">{req.code}</p>
+                        <h4 className="font-semibold text-black">{req.subject}</h4>
+                        <p className="text-xs text-gradient-700 font-mono">{req.code}</p>
                       </div>
-                      <Badge variant="outline" className="bg-orange-50 text-orange-600 border-orange-200">
+                      <Badge variant="outline">
                         Pending
                       </Badge>
                     </div>
 
                     {/* Content: Student Count + Schedule */}
-                    <div className="flex items-center gap-4 mb-3 text-sm text-gray-600">
+                    <div className="flex items-center justify-between gap-4 mb-3 text-sm text-gray-600">
                         <div className="flex items-center gap-1.5" title="Students Interested">
                             <Users className="w-4 h-4 text-primary" />
                             <span className="font-bold text-gray-800">{req.studentCount}</span> students
@@ -207,19 +203,19 @@ export function AdminDashboard() {
               </Link>
               <Link to="/admin/requests">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-4 h-4 hidden md:block" />
                   <span>Class Requests</span>
                 </Button>
               </Link >
               <Link to="/admin/reports">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <BarChart3 className="w-4 h-4" />
+                  <BarChart3 className="w-4 h-4 hidden md:block" />
                   <span>System Reports</span>
                 </Button>
               </Link>
               <Link to="/admin/dashboard">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <Users className="w-4 h-4" />
+                  <Users className="w-4 h-4 hidden md:block" />
                   <span>Manage Users</span>
                 </Button>
               </Link>

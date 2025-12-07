@@ -140,24 +140,24 @@ export function TuTorDashboard() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link to="/tutor/create-class">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-4 h-4 hidden md:block" />
                   <span>Create Classes</span>
                 </Button>
               </Link>
               <Link to="/tutor/schedule">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-4 h-4 hidden md:block" />
                   <span>View Schedule</span>
                 </Button>
               </Link >
               <Link to="/tutor/reports">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <Users className="w-4 h-4" />
+                  <Users className="w-4 h-4 hidden md:block" />
                   <span>Class Report</span>
                 </Button>
               </Link>
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                <TrendingUp className="w-4 h-4" />
+                <TrendingUp className="w-4 h-4 hidden md:block" />
                 <span>My Progress</span>
               </Button>
             </div>

@@ -140,24 +140,24 @@ export function StudentDashboard() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link to="/student/classes">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-4 h-4 hidden md:block" />
                   <span>Find Classes</span>
                 </Button>
               </Link>
               <Link to="/student/schedule">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-4 h-4 hidden md:block" />
                   <span>View Schedule</span>
                 </Button>
               </Link >
               <Link to="/student/request">
                 <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                  <Users className="w-4 h-4" />
+                  <Users className="w-4 h-4 hidden md:block" />
                   <span>Join Request</span>
                 </Button>
               </Link>
               <Button variant="outline" className="w-full justify-start gap-2 h-auto py-4">
-                <TrendingUp className="w-4 h-4" />
+                <TrendingUp className="w-4 h-4 hidden md:block" />
                 <span>My Progress</span>
               </Button>
             </div>
