@@ -246,6 +246,7 @@ export function SessionNote({sessions, role} : SessionProps){
                           {session.time}
                         </span>
                       </div>
+                      { role === 'tutor' &&
                       <div className="flex gap-4">
                         <Button
                         onClick={(e) => {
@@ -267,7 +268,7 @@ export function SessionNote({sessions, role} : SessionProps){
                         >
                           Add Detail
                         </Button>
-                      </div>
+                      </div>}
                     </div>
                     <div className="border-t border-gradient mt-4 pt-2">
                       {session.status ==='scheduled'?

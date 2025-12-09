@@ -161,7 +161,7 @@ export function AdminDashboard() {
             </CardHeader>
             <CardContent className="space-y-4">
               {activeClasses.map((cls) => (
-                <Link key={cls.id} to={`/admin/classes/${cls.id}`}>
+                <Link key={cls.id} to={`/admin/dashboard`}>
                     <div className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer mb-4">
                         <div className="flex items-start justify-between mb-2">
                         <div>

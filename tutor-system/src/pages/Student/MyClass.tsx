@@ -101,6 +101,7 @@ const StudentMyClasses = () => {
                   classData={classData}
                   enrolled={true}
                   link ={classData.id}
+                  tutor={false}
                 />
               ))}
             </div>
