@@ -242,27 +242,9 @@ export function TutorClassDetail(){
         {/* Monitoring tab */}
           <TabsContent value="monitoring">
             <Card>
-              <CardHeader>
-                <CardTitle>My Progress</CardTitle>
-                <CardDescription>Track your learning journey</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-3 gap-4">
-                  {[
-                    { label: 'Attendance', value: '89%', color: 'text-success' },
-                    { label: 'Completed Sessions', value: '8/12', color: 'text-primary' },
-                    { label: 'Participation', value: 'High', color: 'text-secondary' },
-                  ].map((stat, idx) => (
-                    <div key={idx} className="p-4 rounded-lg bg-gradient-50 border border-gradient-50">
-                      <p className="text-sm text-gradient-600 mb-1">{stat.label}</p>
-                      <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
+              
               {classInfo.status === 'inactive' &&
               <>
-                <div className="border border-gradient mx-3"></div>
                 <CardHeader>
                   <CardTitle>Request Student</CardTitle>
                   <CardDescription>Allow students to join your class</CardDescription>
@@ -270,13 +252,32 @@ export function TutorClassDetail(){
                 <CardContent className="space-y-4">
                   <StudentTable key={classInfo.id} requestedStudents={classInfo.requestedStudents}/>
                 </CardContent>
+                
               </>}
               {classInfo.status === 'active' &&
               <>
+                <CardHeader>
+                  <CardTitle>My Progress</CardTitle>
+                  <CardDescription>Track your learning journey</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {[
+                      { label: 'Attendance', value: '89%', color: 'text-success' },
+                      { label: 'Completed Sessions', value: '8/12', color: 'text-primary' },
+                      { label: 'Participation', value: 'High', color: 'text-secondary' },
+                    ].map((stat, idx) => (
+                      <div key={idx} className="p-4 rounded-lg bg-gradient-50 border border-gradient-50">
+                        <p className="text-sm text-gradient-600 mb-1">{stat.label}</p>
+                        <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
                 <div className="border border-gradient mx-3"></div>
                 <CardHeader>
-                  <CardTitle>Request Student</CardTitle>
-                  <CardDescription>Allow students to join your class</CardDescription>
+                  <CardTitle>Monitor Student</CardTitle>
+                  <CardDescription>Monitor student participation in your class</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <TrackStu students={classInfo.requestedStudents}/>
