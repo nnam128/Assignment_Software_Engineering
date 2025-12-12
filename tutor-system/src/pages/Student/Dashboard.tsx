@@ -101,7 +101,7 @@ export function StudentDashboard() {
               {upcomingSessions.map((session) => {
                 const classData = mockClasses.find(c => c.id === session.classId);
                 return (
-                  <Link key={session.id} to={`/student/classes/${session.classId}/${session.id}`}>
+                  <Link key={session.id} to={`/student/dashboard`}>
                     <div key={session.id} className="p-4 rounded-lg border border-gradient hover:border-primary/50 hover:shadow-card transition-all cursor-pointer mb-4">
                       <div className="flex items-start justify-between mb-2">
                         <div>
