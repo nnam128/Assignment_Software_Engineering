@@ -158,9 +158,8 @@ This project does NOT include:
 - **State Management:** React Hooks (useState, useContext)
 - **Routing:** React Router (if needed)
 
----
-
 ## 📁 Project Structure
+```text
 src/
 │
 ├── components/       # Reusable UI components (buttons, cards, navbar)
@@ -170,44 +169,54 @@ src/
 ├── assets/           # Images, icons
 ├── routes/           # Route definitions
 └── App.jsx           # Main entry
+[cite: 1]
 
----
+```bash
+npm---
 
 ## 🚀 Getting Started
 
 ### 1. Install dependencies
 ```bash
 npm install
+```text
+http://localhost:5[cite: 1]
 
 ### 2. Run development server
+```bash
 npm run dev
+[cite: 1]
 
 ### 3. Open application
+```text
 http://localhost:5173
+```[cite: 1]
+
+---
 
 ## 🎨 UI Design Notes
 
-* Clean dashboard-style interface
-* Role-based UI (Student / Tutor / Department / Admin)
-* Fully responsive (desktop + mobile)
-* Mock data simulates real system behavior
-* All workflows are frontend-only demonstrations
+* **Clean dashboard-style interface**[cite: 1]
+* **Role-based UI** (Student / Tutor / Department / Admin)[cite: 1]
+* **Fully responsive** (desktop + mobile)[cite: 1]
+* **Mock data** simulates real system behavior[cite: 1]
+* All workflows are **frontend-only demonstrations**[cite: 1]
 
-⸻
+---
 
 ## 📊 System Vision
 
 This system aims to improve:
 
-* 📈 Academic support efficiency
-* 🤝 Tutor–student collaboration
-* 📚 Learning resource accessibility
-* 🧾 Administrative transparency
-* 📊 Data-driven education decisions
+* 📈 Academic support efficiency[cite: 1]
+* 🤝 Tutor–student collaboration[cite: 1]
+* 📚 Learning resource accessibility[cite: 1]
+* 🧾 Administrative transparency[cite: 1]
+* 📊 Data-driven education decisions[cite: 1]
 
-⸻
+---
 
 ## 👨‍💻 Authors
 
-* Nguyễn Nhật Nam
-* Tô Nhã Vy
+* **Nguyễn Nhật Nam**```[cite: 1]
+* **Tô Nhã Vy**[cite: 1]
