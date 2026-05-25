@@ -13,7 +13,12 @@ Currently, tutoring activities are handled through fragmented manual processes, 
 > ⚠️ This project is a **UI Mockup Prototype only** (no backend implementation).  
 Built using **React, Tailwind CSS, and shadcn/ui** to demonstrate system workflows and user experience.
 
-![Use Case Diagram](./image.png)
+## 📌 Use Case Diagram
+<p align="center">
+
+  <img src="./image.png" width="80%" />
+
+</p>
 ---
 
 ## 🎯 Objectives
